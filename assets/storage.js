@@ -2,7 +2,7 @@ const KEY_TES = "tes";
 const KEY_BOOKMARK = "bookmark";
 
 function checkForStorage() {
-    return typeof (Storage) !== "undefined";
+    return typeof (Storage) !== "basliksiz";
 }
 
 const set = (data) => {

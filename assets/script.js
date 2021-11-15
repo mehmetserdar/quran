@@ -2,14 +2,14 @@ const indexPage = () => {
     $('#quran').click(() => {
         document.location.href = 'quran.html';
     });
-    $('#jadwal').click(() => {
-        belumTersedia();
+    $('#time').click(() => {
+        mevcutDegil();
     });
-    $('#doa').click(() => {
+    $('#dua').click(() => {
         document.location.href = 'dua-list.html';
     });
-    $('#pengaturan').click(() => {
-        belumTersedia();
+    $('#settings').click(() => {
+        mevcutDegil();
     });
     $('#bookmark').click(() => {
         document.location.href = 'bookmark.html';
@@ -27,25 +27,25 @@ const indexPage = () => {
 
     });
 
-    const belumTersedia = () => {
-        alert('Halaman tidak tersedia');
+    const mevcutDegil = () => {
+        alert('Sayfa mevcut değil');
     }
 };
 
-const doaListPage = () => {
-    //Doa-list.html
+const duaListPage = () => {
+    //dua-list.html
     const warna = [
     
     ];
 
     let i = 1;
-    doa.forEach((d) => {
-        const html = `<li id="${i}" class="doa list-group-item list-group-item-success ">${d.nama} Duası</li>`;
-        $('#list-doa').append(html);
+    dua.forEach((d) => {
+        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.nama} Duası</li>`;
+        $('#list-dua').append(html);
         i++;
     })
 
-    $('.doa').click((e) => {
+    $('.dua').click((e) => {
         document.location.href = `dua.html?${$(e.target).attr('id')}`;
     });
 
@@ -54,28 +54,28 @@ const doaListPage = () => {
 
 };
 
-const doaPage = () => {
-    //Doa.html
+const duaPage = () => {
+    //dua.html
     const url = window.location.href;
     const id = url.substr(url.indexOf('?') + 1);
 
-    d = doa[id - 1];
+    d = dua[id - 1];
 
-    $('.judul').text(`${d.nama} Duası`);
-    $('.teks-arab').text(d.arab);
-    $('.teks-diyanet').text(d.diyanet);
-    $('.teks-en').text(d.en);
+    $('.baslik').text(`${d.nama} Duası`);
+    $('.yazi-arab').text(d.arab);
+    $('.yazi-turk').text(d.turk);
+    $('.yazi-en').text(d.en);
 };
 
 const quranPage = () => {
     //Quran.html
     $.get('https://api.alquran.cloud/v1/surah', (data) => {
-        isiDaftar(data.data);
+        contentList(data.data);
         $('.loading').css('display', 'none');
     });
 
 
-    const isiDaftar = (data) => {
+    const contentList = (data) => {
         let i = 1;
         data.forEach((d) => {
             const elemenList = `<tr  class="">
@@ -109,7 +109,7 @@ const surahPage = () => {
     } else {
         no_s = url.substr(url.indexOf('?') + 1);
     }
-    /* ru.kuliev */
+    /* ru.kuliev ,  de.khoury  ,  */
     const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.alafasy,tr.diyanet,en.asad`;
     let surah = [];
     let jmlAyah;
@@ -120,14 +120,14 @@ const surahPage = () => {
         isiData(data.data);
         jmlAyah = data.data[0].numberOfAyahs;
         $('.loading').css('display', 'none');
-        $('.judul').text(`${data.data[0].englishName}`);
+        $('.baslik').text(`${data.data[0].englishName}`);
     });
 
     const isiData = (data) => {
         for (let i = 0; i < data[0].numberOfAyahs; i++) {
             const obj = {
                 arab: '',
-                diyanet: '',
+                turk: '',
                 en: '',            
                 audio: ''
 
@@ -150,7 +150,7 @@ const surahPage = () => {
 
         i = 0;
         data[1].ayahs.forEach((ayah) => {
-            surah[i].diyanet = ayah.text;
+            surah[i].turk = ayah.text;
 
             i++;
         });
@@ -169,10 +169,10 @@ const surahPage = () => {
             i++;
         });
         */
-        tampilkanData();
+        showData();
     };
 
-    const tampilkanData = () => {
+    const showData = () => {
         i = 1;
         surah.forEach((ayah) => {
             const elementList =
@@ -182,13 +182,13 @@ const surahPage = () => {
                     ${i}
                 </div>
                 <a class="text text-success"><i class="fas fa-play fa-lg" data-id="${i}"></i></a><br> 
-                <a class="text text-info"><i class="fas fa-bookmark fa-lg" data-id="${i}"></i></a>
+                <a class="text text-dark"><i class="fas fa-bookmark fa-lg" data-id="${i}"></i></a>
             </div>
-            <div class="item-teks">
-                <div class="teks-arab">${ayah.arab}</div>
-                <div class="teks-tr">${ayah.diyanet}</div>
-                <div class="teks-en">${ayah.en}</div>
-                <div class="teks-en" style="display: none;">${ayah.ru}</div>
+            <div class="item-yazi">
+                <div class="yazi-arab">${ayah.arab}</div>
+                <div class="yazi-tr">${ayah.turk}</div>
+                <div class="yazi-en">${ayah.en}</div>
+                <div class="yazi-en" style="display: none;">${ayah.ru}</div>
             </div>
         </li>`;
 
@@ -215,7 +215,7 @@ const surahPage = () => {
     
 
     const methodPlay = (e) => {
-        //tampilAudio();
+        //onAudio();
         playAudio($(e.target).attr('data-id'));
     };
 
@@ -253,9 +253,11 @@ const surahPage = () => {
         $('.toast').toast('show');
     };
 
-    $('.fa-stop-circle').click(() => {
+    $('.fa-stop').click(() => {
         stopAudio();
     });
+
+    
 
     const stopAudio = () => {
         const audioAyah = document.querySelectorAll('.audioAyah');
@@ -266,7 +268,9 @@ const surahPage = () => {
         sedangDimainkan = true;
     };
 
-    const tampilAudio = () => {
+    
+
+    const onAudio = () => {
         i = 1;
         surah.forEach((ayah) => {
             const el = `<audio id="surahPlayer" src="${ayah.audio}" type="audio/mp3" controls="controls" class="audioAyah audioAyah${i}"></audio>`;

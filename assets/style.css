@@ -9,9 +9,13 @@
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 .bg-home-screen {
-    background-image: url("image/greek-vase.png");
+    background-image: url("image/bg4.png");
 }
 
 .full-screen {
@@ -23,7 +27,7 @@
 
 
 .menu {
-    width: 75%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 45%;
 }
@@ -43,7 +47,7 @@ footer {
 }
 
 footer a {
-    color: darkblue;
+    color: white;
 }
 
 
@@ -55,7 +59,7 @@ footer a {
     top: 0;
 }
 
-.header-quran .judul {
+.header-quran .baslik {
     margin-top: 0.5em;
     height: 100%;
     margin-left: 2.5em;
@@ -101,7 +105,6 @@ footer a {
 }
 
 
-/* surah.html */
 .list-item {
     display: flex;
     border-bottom: 0.02em solid #6C757D;
@@ -123,12 +126,12 @@ footer a {
 
 }
 
-.item-teks {
+.item-yazi {
     flex-basis: 75%;
    
 }
 
-.teks-tr {
+.yazi-tr {
     font-weight: bold;
     font-size: 1.2em;
     line-height: 1em;
@@ -137,7 +140,7 @@ footer a {
    
 }
 
-.teks-en {
+.yazi-en {
     font-weight: bold;
     font-size: 1.2em;
     line-height: 1em;
@@ -145,7 +148,7 @@ footer a {
    
 }
 
-.teks-arab {
+.yazi-arab {
     font-family: 'mequran';
     text-align: right;
     margin-top: 1.2em;
@@ -166,7 +169,7 @@ footer a {
     margin-top: 0.5em;
 }
 
-/* Jadwal Shalat */
+
 
 
 .card-body .kata {
@@ -194,7 +197,7 @@ footer a {
     max-width: 95%;
 }
 
-.about-judul {
+.about-baslik {
     margin-top: 0.5em;
     height: 100%;
     margin-left: 1em;
