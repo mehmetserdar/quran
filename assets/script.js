@@ -40,7 +40,7 @@ const duaListPage = () => {
 
     let i = 1;
     dua.forEach((d) => {
-        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.nama} Duası</li>`;
+        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.name} Duası</li>`;
         $('#list-dua').append(html);
         i++;
     })
@@ -61,7 +61,7 @@ const duaPage = () => {
 
     d = dua[id - 1];
 
-    $('.baslik').text(`${d.nama} Duası`);
+    $('.baslik').text(`${d.name} Duası`);
     $('.yazi-arab').text(d.arab);
     $('.yazi-turk').text(d.turk);
     $('.yazi-en').text(d.en);
@@ -80,14 +80,14 @@ const quranPage = () => {
         data.forEach((d) => {
             const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
-                            <td class="td2 tebal nama_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 tebal name_s" no-surah="${d.number}">${d.englishName}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
             $('#list').append(elemenList);
             i++;
         });
 
-        $('.nama_s').click((e) => {
+        $('.name_s').click((e) => {
             document.location.href = `surah.html?${$(e.target).attr('no-surah')}`;
         });
     };
