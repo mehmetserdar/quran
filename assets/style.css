@@ -100,7 +100,7 @@ footer a {
 }
 
 
-.tebal {
+.strong {
     font-weight: 450;
 }
 
@@ -133,7 +133,7 @@ footer a {
 
 .yazi-tr {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.6em;
     line-height: 1em;
     margin-bottom: .5em;
     
@@ -141,7 +141,7 @@ footer a {
 }
 
 .yazi-en {
-    font-weight: bold;
+    font-style: italic;
     font-size: 1.2em;
     line-height: 1em;
     margin-bottom: .5em;
@@ -152,8 +152,8 @@ footer a {
     font-family: 'mequran';
     text-align: right;
     margin-top: 1.2em;
-    font-size: 2.2em;
-    line-height: 2em;
+    font-size: 2.4em;
+    line-height: 2.6em;
     margin-bottom: 1em;
 }
 

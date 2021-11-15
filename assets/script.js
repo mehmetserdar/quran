@@ -63,8 +63,8 @@ const duaPage = () => {
 
     $('.baslik').text(`${d.name} Duası`);
     $('.yazi-arab').text(d.arab);
-    $('.yazi-turk').text(d.turk);
-    $('.yazi-en').text(d.en);
+    $('.yazi-en').text(d.turk);
+    $('.yazi-turk').text(d.en);
 };
 
 const quranPage = () => {
@@ -80,7 +80,7 @@ const quranPage = () => {
         data.forEach((d) => {
             const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
-                            <td class="td2 tebal name_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
             $('#list').append(elemenList);
