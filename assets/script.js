@@ -43,7 +43,7 @@ const duaListPage = () => {
    
     let i = 1;
     dua.forEach((d) => {
-        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.name} Duası</li>`;
+        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.name}</li>`;
         $('#list-dua').append(html);
         i++;
     })
@@ -64,7 +64,8 @@ const duaPage = () => {
 
     d = dua[id - 1];
 
-    $('.baslik').text(`${d.name} Duası`);
+    $('.title').text(`${d.name}`);
+    $('.baslik').text(`${d.name}`);
     $('.yazi-arab').text(d.arab);
     $('.yazi-en').text(d.turk);
     $('.yazi-turk').text(d.en);
@@ -96,6 +97,7 @@ const surePage = () => {
 
     d = sure[id - 1];
 
+    $('.title').text(`${d.name}`);
     $('.baslik').text(`${d.name}`);
     $('.yazi-arab').text(d.arab);
     $('.yazi-en').text(d.turk);
