@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title id="title">Bismillahirrahmanirrahim</title>
+    <title>Bismillahirrahmanirrahim</title>
     <link rel="shortcut icon" href="assets/image/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -23,42 +24,25 @@
 
 <body class="bg-light">
     <header class="header-quran bg-success text-light m-0">
-        <span class="baslik">Sure</span><span class="ikon">
-           
-            <span class="text text-light"><i class="fas fa-stop fa-lg text-danger"></i></span></span>
+        <span class="baslik">Namaz Sureleri </span>
     </header>
     <main class="">
-        <div class="list-audio" style="display: none;">
-
+        <div class="container">
+            <div class="yazi-arab mt-5">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+            <br>
+            <div class="yazi-en">Alhamdu lillaahi Rabbilalemin</div>
+            <br>
+            <div class="yazi-turk">Alemlerin Rabbi Allah'a hamdolsun!</div>
+            <br>
         </div>
-
-        <ul id="list-ayah">
-        </ul>
     </main>
-    <div class="loading">
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Yükleniyor...</span>
-            </div>
-        </div>
-    </div>
-    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center">
-
-        <!-- Then put toasts within -->
-        <div class="toast bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-            <div class="toast-body text-light">
-                Yer İmlerine Eklendi
-            </div>
-        </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-    <script src="./assets/storage.js"></script>
+    <script src="./assets/data/sure.js"></script>
     <script src="./assets/script.js"></script>
     <script>
-        surahPage();
+        surePage();
     </script>
 </body>
 

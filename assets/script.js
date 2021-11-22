@@ -8,6 +8,12 @@ const indexPage = () => {
     $('#dua').click(() => {
         document.location.href = 'dua-list.html';
     });
+    $('#sure').click(() => {
+        document.location.href = 'sure-list.html';
+    });
+    $('#abdest').click(() => {
+        document.location.href = 'abdest.html';
+    });
     $('#settings').click(() => {
         mevcutDegil();
     });
@@ -34,10 +40,7 @@ const indexPage = () => {
 
 const duaListPage = () => {
     //dua-list.html
-    const warna = [
-    
-    ];
-
+   
     let i = 1;
     dua.forEach((d) => {
         const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.name} Duası</li>`;
@@ -62,6 +65,38 @@ const duaPage = () => {
     d = dua[id - 1];
 
     $('.baslik').text(`${d.name} Duası`);
+    $('.yazi-arab').text(d.arab);
+    $('.yazi-en').text(d.turk);
+    $('.yazi-turk').text(d.en);
+};
+
+const sureListPage = () => {
+    //sure-list.html
+    
+    let i = 1;
+    sure.forEach((d) => {
+        const html = `<li id="${i}" class="sure list-group-item list-group-item-success ">${d.name}</li>`;
+        $('#list-sure').append(html);
+        i++;
+    })
+
+    $('.sure').click((e) => {
+        document.location.href = `sure.html?${$(e.target).attr('id')}`;
+    });
+
+
+
+
+};
+
+const surePage = () => {
+    //sure.html
+    const url = window.location.href;
+    const id = url.substr(url.indexOf('?') + 1);
+
+    d = sure[id - 1];
+
+    $('.baslik').text(`${d.name}`);
     $('.yazi-arab').text(d.arab);
     $('.yazi-en').text(d.turk);
     $('.yazi-turk').text(d.en);
@@ -121,6 +156,7 @@ const surahPage = () => {
         jmlAyah = data.data[0].numberOfAyahs;
         $('.loading').css('display', 'none');
         $('.baslik').text(`${data.data[0].englishName}`);
+        $('#title').text(`${data.data[0].englishName}`);
     });
 
     const isiData = (data) => {
