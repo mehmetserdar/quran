@@ -29,7 +29,7 @@ a {
 .menu {
     width: 60%;
     margin: 0 auto;
-    margin-top: 45%;
+    margin-top: 15%;
 }
 
 .item-menu {
@@ -62,7 +62,7 @@ footer a {
 .header-quran .baslik {
     margin-top: 0.5em;
     height: 100%;
-    margin-left: 2.5em;
+    
     flex-basis: 50%;
     font-weight: bold;
     font-size: 1.2em;
@@ -221,7 +221,7 @@ footer a {
 
 @media only screen and (min-width: 1000px) {
     .menu{
-        margin-top: 15%;
+        margin-top: 10%;
     }
     .loading{
         margin-top: 15%;
