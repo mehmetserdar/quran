@@ -140,6 +140,7 @@ const surahPage = () => {
     const url = window.location.href;
     let no_s = '';
     let no_a;
+    
     if (url.search('#') != -1) {
         no_s = url.substring(url.indexOf('?') + 1, url.indexOf('#'));
         no_a = url.substr(url.indexOf('#') + 1);
@@ -147,7 +148,7 @@ const surahPage = () => {
         no_s = url.substr(url.indexOf('?') + 1);
     }
     /* ru.kuliev ,  de.khoury  ,  */
-    const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.alafasy,tr.diyanet,en.asad`;
+    const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.alafasy,tr.vakfi,en.asad`;
     let surah = [];
     let jmlAyah;
 
@@ -285,7 +286,7 @@ const surahPage = () => {
     const methodBookmark = (e) => {
         const bookmarkObj = {
             surah: no_s,
-            ayat: $(e.target).attr('data-id')
+            ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
         $('.toast').toast('show');
@@ -340,6 +341,8 @@ const bookmarkPage = () => {
         deleteData(id);
         $('li').remove(`#${id}`);
     });
+
+    
 
 
 
