@@ -148,7 +148,7 @@ const surahPage = () => {
         no_s = url.substr(url.indexOf('?') + 1);
     }
     /* ru.kuliev ,  de.khoury  ,  */
-    const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.alafasy,tr.vakfi,en.asad`;
+    const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.hanirifai,tr.vakfi,en.asad`;
     let surah = [];
     let jmlAyah;
 
