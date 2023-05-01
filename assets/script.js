@@ -286,8 +286,7 @@ const surahPage = () => {
     const methodBookmark = (e) => {
         const bookmarkObj = {
             surah: no_s,
-            ayat: $(e.target).attr('data-id'),
-            name: englishName,            
+            ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
         $('.toast').toast('show');
@@ -326,7 +325,7 @@ const bookmarkPage = () => {
     let i = 0;
     data.forEach((d) => {
         const html = `<li class="bookmark list-group-item d-flex justify-content-between align-items-center mt-3" data-surah="${d.surah}" data-ayat="${d.ayat}" index="${i}" id="${i}">
-        ${d.name}:${d.ayat}
+        ${d.surah}:${d.ayat}
         <span class="badge badge-danger badge-pill">X</span>
     </li`;
         $('#list-bookmark').append(html);
