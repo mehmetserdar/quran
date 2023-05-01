@@ -194,12 +194,12 @@ const surahPage = () => {
             i++;
         });
 
-        i = 0;
-        data[2].ayahs.forEach((ayah) => {
-            surah[i].en = ayah.text;
+        // i = 0;
+        // data[2].ayahs.forEach((ayah) => {
+        //     surah[i].en = ayah.text;
 
-            i++;
-        });
+        //     i++;
+        // });
         /*
         i = 0;
         data[3].ayahs.forEach((ayah) => {
