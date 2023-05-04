@@ -387,10 +387,17 @@ const bookmarkPage = () => {
         deleteData(id);
         $('li').remove(`#${id}`);
     });
-
-    
-
-
-
-
 };
+
+// Check if User Agent is Android
+const isAndroid = /Android/i.test(navigator.userAgent);
+
+// Hide Navigation Menu on Android Devices
+if (isAndroid) {
+  const nav = document.querySelector('header');
+  nav.style.display = 'none';
+
+  // Add Margin to Content to Account for Hidden Navbar
+  const content = document.querySelector('main');
+  content.style.marginTop = '50px'; // adjust this value as needed
+}
