@@ -293,6 +293,7 @@ const surahPage = () => {
 
     let isPlaying = false;
     
+    
     const playAudio = (no) => {
         if(isPlaying){
             stopAudio();
@@ -341,7 +342,7 @@ const surahPage = () => {
             audAy.pause();
             audAy.currentTime = 0;
         });
-        isPlaying = true;
+        isPlaying = false;
     };
 
     
