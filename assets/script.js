@@ -342,7 +342,7 @@ const surahPage = () => {
             audAy.pause();
             audAy.currentTime = 0;
         });
-        isPlaying = false;
+        isPlaying = true;
     };
 
     
