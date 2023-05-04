@@ -397,7 +397,5 @@ if (isAndroid) {
   const nav = document.querySelector('header');
   nav.style.display = 'none';
 
-  // Add Margin to Content to Account for Hidden Navbar
-  const content = document.querySelector('main');
-  content.style.marginTop = '50px'; // adjust this value as needed
+  
 }
