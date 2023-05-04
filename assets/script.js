@@ -14,6 +14,9 @@ const indexPage = () => {
     $('#abdest').click(() => {
         document.location.href = 'abdest.html';
     });
+    $('#sayac').click(() => {
+        document.location.href = 'counter.html';
+    });
     $('#settings').click(() => {
         mevcutDegil();
     });
@@ -404,3 +407,4 @@ if (isAndroid) {
 
   
 }
+

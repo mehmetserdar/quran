@@ -169,7 +169,12 @@ footer a {
     margin-top: 0.5em;
 }
 
-
+body{
+    height: 100vh;
+} 
+.container{
+    height: 100%;
+}
 
 
 .card-body .kata {
@@ -227,3 +232,34 @@ footer a {
         margin-top: 15%;
     }
 }
+
+/* Counter Styles */
+#counterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  #counterNumber {
+    font-size: 10rem;
+    margin-bottom: 2rem;
+  }
+  
+  #counterButtons {
+    display: flex;
+  }
+  
+  #counterButtons button {
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 0 0.5rem;
+    border: none;
+    border-radius: 5px;    
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  

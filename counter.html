@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter App</title>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="counterContainer" class="container d-flex align-items-center justify-content-center">
+
+        <div id="counterButtons" class="row">
+            <button class="btn btn-dark" id="clear-counter">Yeni Sayaç</button>
+            <button class="btn btn-dark" id="save-counter">Kaydet</button>
+            <button class="btn btn-dark" id="load-counter">Yükle</button>
+        </div>
+        <!-- Counter Number -->
+        <h1 id="counterNumber">0</h1>
+
+        <!-- Counter Buttons -->
+        <div id="counterButtons">
+            <button class="btn btn-dark" id="incrementButton">+</button>
+            <button class="btn btn-dark" id="decrementButton">&nbsp;-&nbsp;</button>
+            <br>
+
+        </div>
+
+    </div>
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center">
+
+        <!-- Then put toasts within -->
+        <div class="toast bg-dark" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+            <div class="toast-body text-light">
+                İşlem Başarılı
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+<script>
+    // Get DOM Elements
+    const counterNumber = document.querySelector('#counterNumber');
+    const incrementButton = document.querySelector('#incrementButton');
+    const decrementButton = document.querySelector('#decrementButton');
+    document.getElementById("save-counter").addEventListener("click", saveCounter);
+    document.getElementById("clear-counter").addEventListener("click", clearCounter);
+    document.getElementById("load-counter").addEventListener("click", loadCounter);
+
+
+
+    // Define Counter Variable
+    let counter = 0;
+
+    // Create Function to Update Counter
+    
+
+    // Create Event Listeners for Counter Buttons
+    incrementButton.addEventListener('click', () => {
+        counter++;
+        increaseCounter();
+    });
+
+    decrementButton.addEventListener('click', () => {
+        counter--;
+        decreaseCounter();
+    });
+
+    function decreaseCounter() {
+        const counterValue = parseInt(document.querySelector("#counterNumber").textContent);
+        if (counterValue > 0) {
+            document.querySelector("#counterNumber").textContent = counterValue - 1;
+        }
+    }
+
+    function increaseCounter() {
+        const counterValue = parseInt(document.querySelector("#counterNumber").textContent);
+        document.querySelector("#counterNumber").textContent = counterValue + 1;
+        
+    }
+
+    
+
+    const savedCounterValue = localStorage.getItem("savedCounterValue");
+    if (savedCounterValue) {
+        document.querySelector('#counterNumber').textContent = savedCounterValue;
+    }
+
+    function saveCounter() {
+        const counterValue = document.querySelector('#counterNumber').textContent;
+        localStorage.setItem("savedCounterValue", counterValue);
+        $('.toast').toast('show');
+    }
+
+    
+
+    function clearCounter() {
+        localStorage.setItem("savedCounterValue", 0);
+        document.querySelector('#counterNumber').textContent = "0";
+        $('.toast').toast('show');
+    }
+
+    function loadCounter() {
+        const savedCounterValue = localStorage.getItem("savedCounterValue");
+        if (savedCounterValue) {
+            document.querySelector('#counterNumber').textContent = savedCounterValue;
+            $('.toast').toast('show');
+        } else {
+            $('.toast').toast('show');
+        }
+    }
+
+
+
+</script>
+
+</html>
