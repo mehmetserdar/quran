@@ -45,6 +45,14 @@
             </tbody>
         </table>
     </main>
+    <script>// Check if User Agent is Android
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        
+        // Hide Navigation Menu on Android Devices
+        if (isAndroid) {
+          const nav = document.querySelector('header');
+          nav.style.display = 'none';}
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
