@@ -43,7 +43,7 @@ const duaListPage = () => {
    
     let i = 1;
     dua.forEach((d) => {
-        const html = `<li id="${i}" class="dua list-group-item list-group-item-success ">${d.name}</li>`;
+        const html = `<li id="${i}" class="dua list-group-item list-group-item-dark ">${d.name}</li>`;
         $('#list-dua').append(html);
         i++;
     })
@@ -76,7 +76,7 @@ const sureListPage = () => {
     
     let i = 1;
     sure.forEach((d) => {
-        const html = `<li id="${i}" class="sure list-group-item list-group-item-success ">${d.name}</li>`;
+        const html = `<li id="${i}" class="sure list-group-item list-group-item-dark ">${d.name}</li>`;
         $('#list-sure').append(html);
         i++;
     })
@@ -114,14 +114,28 @@ const quranPage = () => {
 
     const contentList = (data) => {
         let i = 1;
+        let sureler =  ["","Fatiha","Bakara","Ali İmran","Nisa","Maide","Enam","Araf","Enfal",
+    "Tevbe","Yunus","Hud","Yusuf","Rad","İbrahim","Hicr","Nahl","İsra","Kehf"
+    ,"Meryem","Taha","Enbiya","Hacc","Muminun","Nur","Furkan","Şuara","Neml"
+    ,"Kasas","Ankebut","Rum","Lokman","Secde","Ahzab","Sebe","Fatır","Yasin"
+    ,"Saffat","Sad","Zümer","Mümin","Fussilet","Şura","Zuhruf","Duhan","Casiye"
+    ,"Ahkaf","Muhammed","Fetih","Hucurat","Kaf","Zariyat","Tur","Necm","Kamer"
+    ,"Rahman","Vakıa","Hadid","Mücadele","Haşr","Mümtahine","Saff","Cuma"
+    ,"Münafikun","Tegabun","Talak","Tahrim","Mülk","Kalem","Hakka","Mearic"
+    ,"Nuh","Cinn","Müzzemmil","Müddessir","Kıyamet","İnsan","Mürselat","Nebe"
+    ,"Naziat","Abese","Tekvir","İnfitar","Mutaffifin","İnşikak","Buruc","Tarık"
+    ,"Ala","Gaşiye","Fecr","Beled","Şems","Leyl","Duha","İnşirah","Tin","Alak"
+    ,"Kadir","Beyyine","Zilzal","Adiyat","Karia","Tekasur","Asr","Hümeze","Fil"
+    ,"Kureyş","Maun","Kevser","Kafirun","Nasr","Leheb","İhlas","Felak","Nas"];
         data.forEach((d) => {
             const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
-                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${sureler[i]}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
             $('#list').append(elemenList);
             i++;
+            
         });
 
         $('.name_s').click((e) => {
@@ -150,16 +164,30 @@ const surahPage = () => {
     /* ru.kuliev ,  de.khoury  ,  */
     const url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi,en.asad`;
     let surah = [];
-    let jmlAyah;
+    let totalAyat;
+    let sureler =  ["","Fatiha","Bakara","Ali İmran","Nisa","Maide","Enam","Araf","Enfal",
+    "Tevbe","Yunus","Hud","Yusuf","Rad","İbrahim","Hicr","Nahl","İsra","Kehf"
+    ,"Meryem","Taha","Enbiya","Hacc","Muminun","Nur","Furkan","Şuara","Neml"
+    ,"Kasas","Ankebut","Rum","Lokman","Secde","Ahzab","Sebe","Fatır","Yasin"
+    ,"Saffat","Sad","Zümer","Mümin","Fussilet","Şura","Zuhruf","Duhan","Casiye"
+    ,"Ahkaf","Muhammed","Fetih","Hucurat","Kaf","Zariyat","Tur","Necm","Kamer"
+    ,"Rahman","Vakıa","Hadid","Mücadele","Haşr","Mümtahine","Saff","Cuma"
+    ,"Münafikun","Tegabun","Talak","Tahrim","Mülk","Kalem","Hakka","Mearic"
+    ,"Nuh","Cinn","Müzzemmil","Müddessir","Kıyamet","İnsan","Mürselat","Nebe"
+    ,"Naziat","Abese","Tekvir","İnfitar","Mutaffifin","İnşikak","Buruc","Tarık"
+    ,"Ala","Gaşiye","Fecr","Beled","Şems","Leyl","Duha","İnşirah","Tin","Alak"
+    ,"Kadir","Beyyine","Zilzal","Adiyat","Karia","Tekasur","Asr","Hümeze","Fil"
+    ,"Kureyş","Maun","Kevser","Kafirun","Nasr","Leheb","İhlas","Felak","Nas"];
+    
 
 
 
     $.get(url_api, (data) => {
         isiData(data.data);
-        jmlAyah = data.data[0].numberOfAyahs;
+        totalAyat = data.data[0].numberOfAyahs;
         $('.loading').css('display', 'none');
-        $('.baslik').text(`${data.data[0].englishName}`);
-        $('#title').text(`${data.data[0].englishName}`);
+        $('.baslik').text(`${sureler[data.data[1].number]}`);
+        $('#title').text(`${sureler[data.data[1].number]}`);
     });
 
     const isiData = (data) => {
@@ -167,7 +195,8 @@ const surahPage = () => {
             const obj = {
                 arab: '',
                 turk: '',
-                en: '',            
+                en: '', 
+                ru:'',           
                 audio: ''
 
             };
@@ -227,7 +256,7 @@ const surahPage = () => {
                 <div class="yazi-arab">${ayah.arab}</div>
                 <div class="yazi-tr">${ayah.turk}</div>
                 <div class="yazi-en">${ayah.en}</div>
-                <div class="yazi-en" style="display: none;">${ayah.ru}</div>
+                <div class="yazi-en">${ayah.ru}</div>
             </div>
         </li>`;
 
@@ -258,27 +287,31 @@ const surahPage = () => {
         playAudio($(e.target).attr('data-id'));
     };
 
-    let sedangDimainkan = false;
+    let isPlaying = false;
     
     const playAudio = (no) => {
-        if(sedangDimainkan){
+        if(isPlaying){
             stopAudio();
         }
         const el = `<audio id="surahPlayer" src="${surah[no-1].audio}" type="audio/mp3" controls="controls" class="audioAyah audioAyah${no}"></audio>`;
         $('.list-audio').append(el);
 
         const audioAyah = document.querySelector(`.audioAyah${no}`);
-        audioAyah.play();
+        var calanSure = document.getElementsByClassName('no-ayat');
+        
+                calanSure[no-1].setAttribute("style", "background-color : yellow ; border: 2px solid #ffc107");
+            
+                  audioAyah.play();
         no++;
 
-        if (no <= jmlAyah) {
+        if (no <= totalAyat) {
             audioAyah.addEventListener('ended', () => {
                 playAudio(no);
             });
         }
 
-        if(no == jmlAyah){
-            sedangDimainkan = true;
+        if(no == totalAyat){
+            isPlaying = true;
         }
 
     };
@@ -304,7 +337,7 @@ const surahPage = () => {
             audAy.pause();
             audAy.currentTime = 0;
         });
-        sedangDimainkan = true;
+        isPlaying = true;
     };
 
     
@@ -323,9 +356,22 @@ const surahPage = () => {
 const bookmarkPage = () => {
     const data = readData();
     let i = 0;
+    let sureler =  ["","Fatiha","Bakara","Ali İmran","Nisa","Maide","Enam","Araf","Enfal",
+    "Tevbe","Yunus","Hud","Yusuf","Rad","İbrahim","Hicr","Nahl","İsra","Kehf"
+    ,"Meryem","Taha","Enbiya","Hacc","Muminun","Nur","Furkan","Şuara","Neml"
+    ,"Kasas","Ankebut","Rum","Lokman","Secde","Ahzab","Sebe","Fatır","Yasin"
+    ,"Saffat","Sad","Zümer","Mümin","Fussilet","Şura","Zuhruf","Duhan","Casiye"
+    ,"Ahkaf","Muhammed","Fetih","Hucurat","Kaf","Zariyat","Tur","Necm","Kamer"
+    ,"Rahman","Vakıa","Hadid","Mücadele","Haşr","Mümtahine","Saff","Cuma"
+    ,"Münafikun","Tegabun","Talak","Tahrim","Mülk","Kalem","Hakka","Mearic"
+    ,"Nuh","Cinn","Müzzemmil","Müddessir","Kıyamet","İnsan","Mürselat","Nebe"
+    ,"Naziat","Abese","Tekvir","İnfitar","Mutaffifin","İnşikak","Buruc","Tarık"
+    ,"Ala","Gaşiye","Fecr","Beled","Şems","Leyl","Duha","İnşirah","Tin","Alak"
+    ,"Kadir","Beyyine","Zilzal","Adiyat","Karia","Tekasur","Asr","Hümeze","Fil"
+    ,"Kureyş","Maun","Kevser","Kafirun","Nasr","Leheb","İhlas","Felak","Nas"];
     data.forEach((d) => {
-        const html = `<li class="bookmark list-group-item d-flex justify-content-between align-items-center mt-3" data-surah="${d.surah}" data-ayat="${d.ayat}" index="${i}" id="${i}">
-        ${d.surah}:${d.ayat}
+        const html = `<li class="bookmark list-group-item list-group-item-dark d-flex justify-content-between align-items-center " data-surah="${d.surah}" data-ayat="${d.ayat}" index="${i}" id="${i}">
+        ${sureler[d.surah]}:${d.ayat}
         <span class="badge badge-danger badge-pill">X</span>
     </li`;
         $('#list-bookmark').append(html);

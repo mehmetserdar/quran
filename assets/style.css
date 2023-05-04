@@ -29,7 +29,7 @@ a {
 .menu {
     width: 60%;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 33%;
 }
 
 .item-menu {
@@ -141,8 +141,8 @@ footer a {
 }
 
 .yazi-en {
-    font-style: italic;
-    font-size: 1.2em;
+    font-style: bold;
+    font-size: 1.6em;
     line-height: 1em;
     margin-bottom: .5em;
    
