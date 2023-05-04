@@ -250,6 +250,7 @@ const surahPage = () => {
                     ${i}
                 </div>
                 <a class="text text-success"><i class="fas fa-play fa-lg" data-id="${i}"></i></a><br> 
+                <a class="text text-danger"><i class="fas fa-stop fa-lg" data-id="${i}"></i></a><br> 
                 <a class="text text-dark"><i class="fas fa-bookmark fa-lg" data-id="${i}"></i></a>
             </div>
             <div class="item-yazi">
@@ -267,6 +268,9 @@ const surahPage = () => {
 
         $('.fa-play').click((e) => {
             methodPlay(e)
+        });
+        $('.fa-stop').click((e) => {
+            stopAudio(e)
         });
         $('.fa-bookmark').click((e) => {
             methodBookmark(e)
@@ -299,7 +303,7 @@ const surahPage = () => {
         const audioAyah = document.querySelector(`.audioAyah${no}`);
         var calanSure = document.getElementsByClassName('no-ayat');
         
-                calanSure[no-1].setAttribute("style", "background-color : yellow ; border: 2px solid #ffc107");
+                calanSure[no-1].setAttribute("style", "background-color : greenyellow ; border: 2px solid green");
             
                   audioAyah.play();
         no++;
