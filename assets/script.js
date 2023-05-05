@@ -331,7 +331,7 @@ const surahPage = () => {
             ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
-        toast.style.display = "block";
+        toast.style.visibility = "visible";
         $('.toast').toast('show');
     };
 
