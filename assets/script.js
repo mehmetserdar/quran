@@ -330,6 +330,8 @@ const surahPage = () => {
             ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
+        const toast = document.querySelector('toast');
+        toast.style.display = "block";
         $('.toast').toast('show');
     };
 
@@ -403,9 +405,7 @@ const isAndroid = /Android/i.test(navigator.userAgent);
 // Hide Navigation Menu on Android Devices
 if (isAndroid) {
   const nav = document.querySelector('header');
-  const audio = document.querySelector('list-audio'); 
   nav.style.display = 'none';
-  audio.style.display = 'none';
   
 }
 
