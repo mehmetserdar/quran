@@ -276,7 +276,7 @@ const surahPage = () => {
             stopAudio(e)
         });
         $('.fa-bookmark').click((e) => {
-            const toast = document.querySelector('toast');
+            const toast = document.querySelector('.toast');
             toast.style.visibility = "visible";
             methodBookmark(e)
         });
