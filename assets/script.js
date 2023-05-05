@@ -276,6 +276,8 @@ const surahPage = () => {
             stopAudio(e)
         });
         $('.fa-bookmark').click((e) => {
+            const toast = document.getElementsByClassName('toast');
+            toast.style.visibility = "visible";
             methodBookmark(e)
         });
 
@@ -325,13 +327,13 @@ const surahPage = () => {
     };
 
     const methodBookmark = (e) => {
-        const toast = document.getElementsByClassName('toast');
+        
         const bookmarkObj = {
             surah: no_s,
             ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
-        toast.style.visibility = "visible";
+        
         $('.toast').toast('show');
     };
 
