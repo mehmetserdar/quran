@@ -325,12 +325,12 @@ const surahPage = () => {
     };
 
     const methodBookmark = (e) => {
+        const toast = document.getElementsByClassName('toast');
         const bookmarkObj = {
             surah: no_s,
             ayat: $(e.target).attr('data-id'),            
         };
         addData(bookmarkObj);
-        const toast = document.querySelector('toast');
         toast.style.display = "block";
         $('.toast').toast('show');
     };
