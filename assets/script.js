@@ -225,12 +225,12 @@ const quranPage = () => {
       "Felak",
       "Nas",
     ];
-    if (userLang == "tr" || "tr-TR") {
+    if (userLang == "en") {
       data.forEach((d) => {
         const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
                             
-                            <td class="td2 strong name_s" no-surah="${d.number}">${sureler[i]}</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
         $("#list").append(elemenList);
@@ -241,7 +241,7 @@ const quranPage = () => {
         const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
                             
-                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${sureler[i]}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
         $("#list").append(elemenList);
@@ -274,10 +274,10 @@ const surahPage = () => {
   }
   /*  ,  de.khoury  ,  */
   switch (userLang) {
-    case "de" || "de-DE":
+    case "de":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,de.khoury`;
       break;
-    case "es" || "es-ES":
+    case "es":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,es.cortes`;
       break;
     case "ru":
@@ -286,11 +286,11 @@ const surahPage = () => {
     case "fr":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,fr.hamidullah`;
       break;
-    case "tr":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
+    case "en":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,en.asad`;
       break;
     default:
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,en.asad`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakif`;
       break;
   }
 
@@ -451,10 +451,10 @@ const surahPage = () => {
     });
 
     switch (userLang) {
-      case "tr" || "tr-TR":
+      case "en":
         i = 0;
         data[1].ayahs.forEach((ayah) => {
-          surah[i].tr = ayah.text;
+          surah[i].en = ayah.text;
 
           i++;
         });
@@ -494,7 +494,7 @@ const surahPage = () => {
       default:
         i = 0;
         data[1].ayahs.forEach((ayah) => {
-          surah[i].en = ayah.text;
+          surah[i].tr = ayah.text;
 
           i++;
         });
