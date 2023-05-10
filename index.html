@@ -31,7 +31,7 @@
 	<script src="./assets/script.js"></script>
 	<script>
 		var userLang = navigator.language || navigator.userLanguage || navigator.systemLanguage; 
-		if (userLang != "tr" ){
+		if (userLang != "tr" || "tr-TR" ){
 			indexPage();
 			document.querySelector('#quran').innerHTML = "Quran";
 			document.querySelector('#sayac').innerHTML = "Dhikrmatic";

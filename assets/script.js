@@ -225,7 +225,7 @@ const quranPage = () => {
       "Felak",
       "Nas",
     ];
-    if (userLang == "tr") {
+    if (userLang == "tr" || "tr-TR") {
       data.forEach((d) => {
         const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
@@ -274,10 +274,10 @@ const surahPage = () => {
   }
   /*  ,  de.khoury  ,  */
   switch (userLang) {
-    case "de":
+    case "de" || "de-DE":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,de.khoury`;
       break;
-    case "es":
+    case "es" || "es-ES":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,es.cortes`;
       break;
     case "ru":
@@ -451,7 +451,7 @@ const surahPage = () => {
     });
 
     switch (userLang) {
-      case "tr":
+      case "tr" || "tr-TR":
         i = 0;
         data[1].ayahs.forEach((ayah) => {
           surah[i].tr = ayah.text;
