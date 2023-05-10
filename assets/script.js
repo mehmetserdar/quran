@@ -41,12 +41,13 @@ const indexPage = () => {
 };
 const lang = localStorage.getItem("langValue");
 function loadLanguage() {
-       if (lang == null) {
-        localStorage.setItem("langValue", "tr");
-    }
+  if (lang == null) {
+    localStorage.setItem("langValue", "tr");
+  }
 }
 
-var userLang = navigator.language || navigator.userLanguage || navigator.systemLanguage;
+var userLang =
+  navigator.language || navigator.userLanguage || navigator.systemLanguage;
 const duaListPage = () => {
   //dua-list.html
 
@@ -281,6 +282,9 @@ const surahPage = () => {
   }
   /*  ,  de.khoury  ,  */
   switch (lang) {
+    case "id":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,id.indonesian`;
+      break;
     case "de":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,de.khoury`;
       break;
@@ -295,6 +299,12 @@ const surahPage = () => {
       break;
     case "en":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,en.asad`;
+      break;
+    case "ur":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,ur.ahmedali`;
+      break;
+    case "hi":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,hi.farooq`;
       break;
     default:
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
@@ -439,6 +449,9 @@ const surahPage = () => {
         es: "",
         de: "",
         fr: "",
+        id: "",
+        ur: "",
+        hi: "",
         audio: "",
       };
       surah.push(obj);
@@ -498,6 +511,30 @@ const surahPage = () => {
           i++;
         });
         break;
+      case "id":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].id = ayah.text;
+
+          i++;
+        });
+        break;
+      case "ur":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].ur = ayah.text;
+
+          i++;
+        });
+        break;
+      case "hi":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].hi = ayah.text;
+
+          i++;
+        });
+        break;
       default:
         i = 0;
         data[1].ayahs.forEach((ayah) => {
@@ -531,6 +568,9 @@ const surahPage = () => {
                 <div class="yazi-tr">${ayah.de}</div>
                 <div class="yazi-tr">${ayah.es}</div>
                 <div class="yazi-tr">${ayah.fr}</div>
+                <div class="yazi-tr">${ayah.id}</div>
+                <div class="yazi-tr">${ayah.ur}</div>
+                <div class="yazi-tr">${ayah.hi}</div>
             </div>
         </li>`;
 
@@ -750,121 +790,121 @@ const bookmarkPage = () => {
   ];
 
   let surahNames = [
-        "",
-        "Al-Fatiha", 
-        "Al-Baqara", 
-        "Al Imran", 
-        "An-Nisa", 
-        "Al-Ma'ida", 
-        "Al-An'am", 
-        "Al-A'raf", 
-        "Al-Anfal", 
-        "At-Tawba", 
-        "Yunus", 
-        "Houd", 
-        "Yusuf", 
-        "Ar-Ra'd", 
-        "Ibraheem", 
-        "Al-Hijr", 
-        "An-Nahl", 
-        "Al-Isra", 
-        "Al-Kahf", 
-        "Maryam", 
-        "Ta-Ha", 
-        "Al-Anbiya", 
-        "Al-Hajj", 
-        "Al-Mu'minoon", 
-        "An-Nour", 
-        "Al-Furqan", 
-        "Ash-Shu'ara", 
-        "An-Naml", 
-        "Al-Qasas", 
-        "Al-Ankabut", 
-        "Ar-Roum", 
-        "Luqman", 
-        "As-Sajda", 
-        "Al-Ahzab", 
-        "Saba", 
-        "Fatir", 
-        "Yaseen", 
-        "As-Saffat", 
-        "Sad", 
-        "Az-Zumar", 
-        "Ghafir", 
-        "Fussilat", 
-        "Ash-Shura", 
-        "Az-Zukhruf", 
-        "Ad-Dukhan", 
-        "Al-Jathiya", 
-        "Al-Ahqaf", 
-        "Muhammad", 
-        "Al-Fath", 
-        "Al-Hujurat", 
-        "Qaf", 
-        "Adh-Dhariyat", 
-        "At-Tour", 
-        "An-Najm", 
-        "Al-Qamar", 
-        "Ar-Rahman", 
-        "Al-Waqi'a", 
-        "Al-Hadeed", 
-        "Al-Mujadila", 
-        "Al-Hashr", 
-        "Al-Mumtahana", 
-        "As-Saff", 
-        "Al-Jumu'aa", 
-        "Al-Munafiqoun", 
-        "At-Taghabun", 
-        "At-Talaq", 
-        "At-Tahreem", 
-        "Al-Mulk", 
-        "Al-Qalam", 
-        "Al-Haqqa", 
-        "Al-Ma'aarij", 
-        "Nouh", 
-        "Al-Jinn", 
-        "Al-Muzzammil", 
-        "Al-Muddathir", 
-        "Al-Qiyama", 
-        "Al-Insan", 
-        "Al-Mursalat", 
-        "An-Naba'", 
-        "An-Nazi'at", 
-        "Abasa", 
-        "At-Takweer", 
-        "Al-Infitar", 
-        "Al-Mutaffifeen", 
-        "Al-Inshiqaq", 
-        "Al-Burooj", 
-        "At-Tariq", 
-        "Al-A'la", 
-        "Al-Ghashiyah", 
-        "Al-Fajr", 
-        "Al-Balad", 
-        "Ash-Shams", 
-        "Al-Lail", 
-        "Ad-Dhuha", 
-        "Al-Inshirah", 
-        "At-Teen", 
-        "Al-Alaq", 
-        "Al-Qadr", 
-        "Al-Bayyina", 
-        "Az-Zalzala", 
-        "Al-Adiyat", 
-        "Al-Qaria", 
-        "At-Takathur", 
-        "Al-Asr", 
-        "Al-Humaza", 
-        "Al-Feel", 
-        "Quraysh", 
-        "Al-Maa'oun", 
-        "Al-Kawthar", 
-        "Al-Kafiroun", 
-        "An-Nasr", 
-        "Al-Masad", 
-        "Al-Ikhlas", 
-        "Al-Falaq", 
-        "Al-Nas"
+    "",
+    "Al-Fatiha",
+    "Al-Baqara",
+    "Al Imran",
+    "An-Nisa",
+    "Al-Ma'ida",
+    "Al-An'am",
+    "Al-A'raf",
+    "Al-Anfal",
+    "At-Tawba",
+    "Yunus",
+    "Houd",
+    "Yusuf",
+    "Ar-Ra'd",
+    "Ibraheem",
+    "Al-Hijr",
+    "An-Nahl",
+    "Al-Isra",
+    "Al-Kahf",
+    "Maryam",
+    "Ta-Ha",
+    "Al-Anbiya",
+    "Al-Hajj",
+    "Al-Mu'minoon",
+    "An-Nour",
+    "Al-Furqan",
+    "Ash-Shu'ara",
+    "An-Naml",
+    "Al-Qasas",
+    "Al-Ankabut",
+    "Ar-Roum",
+    "Luqman",
+    "As-Sajda",
+    "Al-Ahzab",
+    "Saba",
+    "Fatir",
+    "Yaseen",
+    "As-Saffat",
+    "Sad",
+    "Az-Zumar",
+    "Ghafir",
+    "Fussilat",
+    "Ash-Shura",
+    "Az-Zukhruf",
+    "Ad-Dukhan",
+    "Al-Jathiya",
+    "Al-Ahqaf",
+    "Muhammad",
+    "Al-Fath",
+    "Al-Hujurat",
+    "Qaf",
+    "Adh-Dhariyat",
+    "At-Tour",
+    "An-Najm",
+    "Al-Qamar",
+    "Ar-Rahman",
+    "Al-Waqi'a",
+    "Al-Hadeed",
+    "Al-Mujadila",
+    "Al-Hashr",
+    "Al-Mumtahana",
+    "As-Saff",
+    "Al-Jumu'aa",
+    "Al-Munafiqoun",
+    "At-Taghabun",
+    "At-Talaq",
+    "At-Tahreem",
+    "Al-Mulk",
+    "Al-Qalam",
+    "Al-Haqqa",
+    "Al-Ma'aarij",
+    "Nouh",
+    "Al-Jinn",
+    "Al-Muzzammil",
+    "Al-Muddathir",
+    "Al-Qiyama",
+    "Al-Insan",
+    "Al-Mursalat",
+    "An-Naba'",
+    "An-Nazi'at",
+    "Abasa",
+    "At-Takweer",
+    "Al-Infitar",
+    "Al-Mutaffifeen",
+    "Al-Inshiqaq",
+    "Al-Burooj",
+    "At-Tariq",
+    "Al-A'la",
+    "Al-Ghashiyah",
+    "Al-Fajr",
+    "Al-Balad",
+    "Ash-Shams",
+    "Al-Lail",
+    "Ad-Dhuha",
+    "Al-Inshirah",
+    "At-Teen",
+    "Al-Alaq",
+    "Al-Qadr",
+    "Al-Bayyina",
+    "Az-Zalzala",
+    "Al-Adiyat",
+    "Al-Qaria",
+    "At-Takathur",
+    "Al-Asr",
+    "Al-Humaza",
+    "Al-Feel",
+    "Quraysh",
+    "Al-Maa'oun",
+    "Al-Kawthar",
+    "Al-Kafiroun",
+    "An-Nasr",
+    "Al-Masad",
+    "Al-Ikhlas",
+    "Al-Falaq",
+    "Al-Nas",
   ];
   data.forEach((d) => {
     if (lang == "tr") {
@@ -877,7 +917,9 @@ const bookmarkPage = () => {
       $("#list-bookmark").append(html);
       i++;
     } else {
-      const html = `<li class="bookmark list-group-item list-group-item-dark d-flex justify-content-between align-items-center " data-surah="${d.surah}" data-ayat="${d.ayat}" index="${i}" id="${i}">
+      const html = `<li class="bookmark list-group-item list-group-item-dark d-flex justify-content-between align-items-center " data-surah="${
+        d.surah
+      }" data-ayat="${d.ayat}" index="${i}" id="${i}">
         ${surahNames[d.surah]}:${d.ayat}
         <span class="badge badge-danger badge-pill">X</span>
     </li`;
@@ -907,7 +949,3 @@ if (isAndroid) {
   const nav = document.querySelector("header");
   nav.style.display = "none";
 }
-
-
-
-
