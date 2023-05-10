@@ -11,34 +11,57 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="assets/style.css">
-  
+
 </head>
 
 <body class="bg-light">
     <header class="header-quran bg-dark text-light m-0">
         <a class="text-white pb-1 pl-3 pt-1" href='javascript:history.back();'><i class="fas fa-arrow-left    "></i></a>
-        <span class="about-baslik">Geliştirici Hakkında</span>
+        <span class="about-baslik">Ayarlar</span>
     </header>
     <main class="about">
         <table class="table table ml-2">
-            <tbody>                
+            <tbody>
+                <tr>
+                    <td class="text text-dark"><i class="fas fa-language"></i></td>
+                    <td>
+                        <label for="lang" class="form-label">Listeden dilinizi seçin:</label>
+                        <select class="form-control" id="lang" onchange="setLang()">
+                            <option selected disabled>Choose one</option>
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                            <option value="ru">Русский</option>
+                            <option value="de">Deutsch</option>
+                            <option value="fr">Français</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </td>
+                </tr>
+
+
                 <tr>
                     <td class="text text-dark"><i class="fab fa-google-play"></i></td>
-                    <td id="other"><a class="text-dark" target="_blank" href="https://play.google.com/store/apps/dev?id=7123957245789156225">Our Other Apps</a></td>
+                    <td id="other"><a class="text-dark" target="_blank"
+                            href="https://play.google.com/store/apps/dev?id=7123957245789156225">Diğer
+                            Uygulamalarımız</a></td>
                 </tr>
                 <tr>
                     <td class="text text-dark"><i class="fas fa-envelope"></i></td>
-                    <td id="contact"><a class="text-dark" target="_blank" href="mailto:absurdapps@yahoo.com">Contact</a></td>
+                    <td id="contact"><a class="text-dark" target="_blank"
+                            href="mailto:absurdapps@yahoo.com">İletişim</a>
+                    </td>
                 </tr>
 
-                
-           
+
+
                 <tr>
                     <td class="text text-dark"><i class="fas fa-align-left"></i></td>
                     <td style="text-align: justify;">
                         <span class="text-dark">
                             <p><b>05.05.2023</b> İlk Sürüm <br>
-                                Google Play Store'a yüklendi. </p>                            
+                                Google Play Store'a yüklendi. </p>
+                            <p><b>11.05.2023</b> Güncelleme <br>
+                                İyileştirmeler yapıldı, yeni diller eklendi. </p>
                         </span>
                     </td>
                 </tr>
@@ -47,23 +70,31 @@
     </main>
     <script>// Check if User Agent is Android
         const isAndroid = /Android/i.test(navigator.userAgent);
-        
+
         // Hide Navigation Menu on Android Devices
         if (isAndroid) {
-          const nav = document.querySelector('header');
-          nav.style.display = 'none';}
+            const nav = document.querySelector('header');
+            nav.style.display = 'none';
+        }
 
-          var userLang = navigator.language || navigator.userLanguage; 
-		if (userLang == "tr" ){
-			document.querySelector('#other').innerHTML = "Diğer Uygulamalarımız";
-			document.querySelector('#contact').innerHTML = "İletişim";
-			document.querySelector('#load-counter').innerHTML = "Yükle";
-            document.querySelector('.toast-body').innerHTML = "İşlem Başarılı";
-		}
+        lang = localStorage.getItem("langValue");
+
+        if (lang == "en") {
+            document.querySelector('#other').innerHTML = "Our Other Apps";
+            document.querySelector('#contact').innerHTML = "Contact";
+            document.querySelector('.form-label').innerHTML = "Choose your language from the list:";
+        }
+
+        function setLang() {
+            langnew = document.getElementById('lang').value;
+            localStorage.setItem("langValue", langnew);
+        }
+
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>

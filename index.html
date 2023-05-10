@@ -15,13 +15,13 @@
 <body class="bg-home-screen">
 	<main>
 		<div class="menu">
-			<button id="quran" class="btn btn-dark btn-block btn-lg font-weight-bold ">Kur'an-ı Kerim</button><br>
+			<button id="quran" class="btn btn-dark btn-block btn-lg font-weight-bold ">Quran</button><br>
 			<button id="dua" class="btn btn-dark btn-block btn-lg font-weight-bold ">Namaz Duaları</button><br>
 			<button id="sure" class="btn btn-dark btn-block btn-lg font-weight-bold ">Namaz Sûreleri</button><br>
 			<button id="abdest" class="btn btn-dark btn-block btn-lg font-weight-bold ">Abdest</button><br>
-			<button id="sayac" class="btn btn-dark btn-block btn-lg font-weight-bold ">Zikirmatik</button><br>
-			<button id="bookmark" class="btn btn-dark btn-block btn-lg font-weight-bold ">Favoriler</button><br>
-			<button id="about" class="btn btn-dark btn-block btn-lg font-weight-bold ">Hakkımızda</button><br>
+			<button id="sayac" class="btn btn-dark btn-block btn-lg font-weight-bold ">Dhikrmatic</button><br>
+			<button id="bookmark" class="btn btn-dark btn-block btn-lg font-weight-bold ">Favorites</button><br>
+			<button id="about" class="btn btn-dark btn-block btn-lg font-weight-bold ">Settings</button><br>
 		</div>
 	</main>
 
@@ -30,21 +30,24 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="./assets/script.js"></script>
 	<script>
-		var userLang = navigator.language || navigator.userLanguage || navigator.systemLanguage; 
-		if (userLang == "en" ){
+		const langValue = localStorage.getItem("langValue");
+		loadLanguage();
+		if (langValue == "tr" ){
 			indexPage();
-			document.querySelector('#quran').innerHTML = "Quran";
-			document.querySelector('#sayac').innerHTML = "Dhikrmatic";
-			document.querySelector('#bookmark').innerHTML = "Favorites";
-			document.querySelector('#about').innerHTML = "About us";
-			document.querySelector('#dua').style.display = "none";
-			document.querySelector('#sure').style.display = "none";
-			document.querySelector('#abdest').style.display = "none";
+			document.querySelector('#quran').innerHTML = "Kur'an-ı Kerim";
+			document.querySelector('#sayac').innerHTML = "Zikirmatik";
+			document.querySelector('#bookmark').innerHTML = "Favoriler";
+			document.querySelector('#about').innerHTML = "Ayarlar";
+			
 
 		} else {
 			indexPage();
+			document.querySelector('#dua').style.display = "none";
+			document.querySelector('#sure').style.display = "none";
+			document.querySelector('#abdest').style.display = "none";
 			
 		}		
+		
 	</script>
 </body>
 

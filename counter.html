@@ -102,7 +102,6 @@
     
 
     function clearCounter() {
-        localStorage.setItem("savedCounterValue", 0);
         document.querySelector('#counterNumber').textContent = "0";
         $('.toast').toast('show');
     }
@@ -116,9 +115,9 @@
             $('.toast').toast('show');
         }
     }
-
-		var userLang = navigator.language || navigator.userLanguage; 
-		if (userLang == "tr" ){
+        const lang = localStorage.getItem("langValue");
+		
+		if (lang == "tr" ){
 			document.querySelector('#clear-counter').innerHTML = "Yeni Sayaç";
 			document.querySelector('#save-counter').innerHTML = "Kaydet";
 			document.querySelector('#load-counter').innerHTML = "Yükle";

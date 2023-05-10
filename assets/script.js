@@ -39,6 +39,13 @@ const indexPage = () => {
     alert("Sayfa mevcut değil");
   };
 };
+const lang = localStorage.getItem("langValue");
+function loadLanguage() {
+       if (lang == null) {
+        localStorage.setItem("langValue", "tr");
+    }
+}
+
 var userLang = navigator.language || navigator.userLanguage || navigator.systemLanguage;
 const duaListPage = () => {
   //dua-list.html
@@ -225,12 +232,12 @@ const quranPage = () => {
       "Felak",
       "Nas",
     ];
-    if (userLang == "en") {
+    if (lang == "tr") {
       data.forEach((d) => {
         const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
                             
-                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${sureler[i]}</td>
                             <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
                         </tr>`;
         $("#list").append(elemenList);
@@ -241,8 +248,8 @@ const quranPage = () => {
         const elemenList = `<tr  class="">
                             <th class="td1" width="30"><div class="no_s">${i}</div> </th>
                             
-                            <td class="td2 strong name_s" no-surah="${d.number}">${sureler[i]}</td>
-                            <td class="td2 text-right">${d.numberOfAyahs} Ayet</td>
+                            <td class="td2 strong name_s" no-surah="${d.number}">${d.englishName}</td>
+                            <td class="td2 text-right">${d.numberOfAyahs} Verses</td>
                         </tr>`;
         $("#list").append(elemenList);
         i++;
@@ -273,7 +280,7 @@ const surahPage = () => {
     no_s = url.substr(url.indexOf("?") + 1);
   }
   /*  ,  de.khoury  ,  */
-  switch (userLang) {
+  switch (lang) {
     case "de":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,de.khoury`;
       break;
@@ -450,7 +457,7 @@ const surahPage = () => {
       i++;
     });
 
-    switch (userLang) {
+    switch (lang) {
       case "en":
         i = 0;
         data[1].ayahs.forEach((ayah) => {
@@ -741,8 +748,126 @@ const bookmarkPage = () => {
     "Felak",
     "Nas",
   ];
+
+  let surahNames = [
+        "",
+        "Al-Fatiha", 
+        "Al-Baqara", 
+        "Al Imran", 
+        "An-Nisa", 
+        "Al-Ma'ida", 
+        "Al-An'am", 
+        "Al-A'raf", 
+        "Al-Anfal", 
+        "At-Tawba", 
+        "Yunus", 
+        "Houd", 
+        "Yusuf", 
+        "Ar-Ra'd", 
+        "Ibraheem", 
+        "Al-Hijr", 
+        "An-Nahl", 
+        "Al-Isra", 
+        "Al-Kahf", 
+        "Maryam", 
+        "Ta-Ha", 
+        "Al-Anbiya", 
+        "Al-Hajj", 
+        "Al-Mu'minoon", 
+        "An-Nour", 
+        "Al-Furqan", 
+        "Ash-Shu'ara", 
+        "An-Naml", 
+        "Al-Qasas", 
+        "Al-Ankabut", 
+        "Ar-Roum", 
+        "Luqman", 
+        "As-Sajda", 
+        "Al-Ahzab", 
+        "Saba", 
+        "Fatir", 
+        "Yaseen", 
+        "As-Saffat", 
+        "Sad", 
+        "Az-Zumar", 
+        "Ghafir", 
+        "Fussilat", 
+        "Ash-Shura", 
+        "Az-Zukhruf", 
+        "Ad-Dukhan", 
+        "Al-Jathiya", 
+        "Al-Ahqaf", 
+        "Muhammad", 
+        "Al-Fath", 
+        "Al-Hujurat", 
+        "Qaf", 
+        "Adh-Dhariyat", 
+        "At-Tour", 
+        "An-Najm", 
+        "Al-Qamar", 
+        "Ar-Rahman", 
+        "Al-Waqi'a", 
+        "Al-Hadeed", 
+        "Al-Mujadila", 
+        "Al-Hashr", 
+        "Al-Mumtahana", 
+        "As-Saff", 
+        "Al-Jumu'aa", 
+        "Al-Munafiqoun", 
+        "At-Taghabun", 
+        "At-Talaq", 
+        "At-Tahreem", 
+        "Al-Mulk", 
+        "Al-Qalam", 
+        "Al-Haqqa", 
+        "Al-Ma'aarij", 
+        "Nouh", 
+        "Al-Jinn", 
+        "Al-Muzzammil", 
+        "Al-Muddathir", 
+        "Al-Qiyama", 
+        "Al-Insan", 
+        "Al-Mursalat", 
+        "An-Naba'", 
+        "An-Nazi'at", 
+        "Abasa", 
+        "At-Takweer", 
+        "Al-Infitar", 
+        "Al-Mutaffifeen", 
+        "Al-Inshiqaq", 
+        "Al-Burooj", 
+        "At-Tariq", 
+        "Al-A'la", 
+        "Al-Ghashiyah", 
+        "Al-Fajr", 
+        "Al-Balad", 
+        "Ash-Shams", 
+        "Al-Lail", 
+        "Ad-Dhuha", 
+        "Al-Inshirah", 
+        "At-Teen", 
+        "Al-Alaq", 
+        "Al-Qadr", 
+        "Al-Bayyina", 
+        "Az-Zalzala", 
+        "Al-Adiyat", 
+        "Al-Qaria", 
+        "At-Takathur", 
+        "Al-Asr", 
+        "Al-Humaza", 
+        "Al-Feel", 
+        "Quraysh", 
+        "Al-Maa'oun", 
+        "Al-Kawthar", 
+        "Al-Kafiroun", 
+        "An-Nasr", 
+        "Al-Masad", 
+        "Al-Ikhlas", 
+        "Al-Falaq", 
+        "Al-Nas"
+  ];
   data.forEach((d) => {
-    if (userLang == "tr") {
+    if (lang == "tr") {
       const html = `<li class="bookmark list-group-item list-group-item-dark d-flex justify-content-between align-items-center " data-surah="${
         d.surah
       }" data-ayat="${d.ayat}" index="${i}" id="${i}">
@@ -753,7 +878,7 @@ const bookmarkPage = () => {
       i++;
     } else {
       const html = `<li class="bookmark list-group-item list-group-item-dark d-flex justify-content-between align-items-center " data-surah="${d.surah}" data-ayat="${d.ayat}" index="${i}" id="${i}">
-        ${d.surah}:${d.ayat}
+        ${surahNames[d.surah]}:${d.ayat}
         <span class="badge badge-danger badge-pill">X</span>
     </li`;
       $("#list-bookmark").append(html);
@@ -782,3 +907,7 @@ if (isAndroid) {
   const nav = document.querySelector("header");
   nav.style.display = "none";
 }
+
+
+
+
