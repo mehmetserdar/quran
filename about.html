@@ -24,11 +24,11 @@
             <tbody>                
                 <tr>
                     <td class="text text-dark"><i class="fab fa-google-play"></i></td>
-                    <td><a class="text-dark" target="_blank" href="https://play.google.com/store/apps/dev?id=7123957245789156225">Diğer Uygulamalarımız</a></td>
+                    <td id="other"><a class="text-dark" target="_blank" href="https://play.google.com/store/apps/dev?id=7123957245789156225">Our Other Apps</a></td>
                 </tr>
                 <tr>
                     <td class="text text-dark"><i class="fas fa-envelope"></i></td>
-                    <td><a class="text-dark" target="_blank" href="mailto:absurdapps@yahoo.com">İletişim</a></td>
+                    <td id="contact"><a class="text-dark" target="_blank" href="mailto:absurdapps@yahoo.com">Contact</a></td>
                 </tr>
 
                 
@@ -52,6 +52,14 @@
         if (isAndroid) {
           const nav = document.querySelector('header');
           nav.style.display = 'none';}
+
+          var userLang = navigator.language || navigator.userLanguage; 
+		if (userLang == "tr" ){
+			document.querySelector('#other').innerHTML = "Diğer Uygulamalarımız";
+			document.querySelector('#contact').innerHTML = "İletişim";
+			document.querySelector('#load-counter').innerHTML = "Yükle";
+            document.querySelector('.toast-body').innerHTML = "İşlem Başarılı";
+		}
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
