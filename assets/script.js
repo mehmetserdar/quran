@@ -39,7 +39,7 @@ const indexPage = () => {
     alert("Sayfa mevcut değil");
   };
 };
-var userLang = navigator.language || navigator.userLanguage;
+var userLang = navigator.language || navigator.userLanguage || navigator.systemLanguage;
 const duaListPage = () => {
   //dua-list.html
 
