@@ -637,8 +637,7 @@ const surahPage = () => {
   const methodBookmark = (e) => {
     const bookmarkObj = {
       surah: no_s,
-      ayat: $(e.target).attr("data-id"),
-      name: englishName,
+      ayat: $(e.target).attr("data-id"),      
     };
     addData(bookmarkObj);
 
