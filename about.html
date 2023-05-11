@@ -25,7 +25,7 @@
                 <tr>
                     <td class="text text-dark"><i class="fas fa-language"></i></td>
                     <td>
-                        <label for="lang" class="form-label">Listeden dilinizi seçin:</label>
+                        <label for="lang" class="form-label">Choose your language from the list:</label>
                         <select class="form-control" id="lang" onchange="setLang()">
                             <option selected disabled>Choose one</option>
                             <option value="tr">Türkçe</option>
@@ -44,20 +44,19 @@
 
                 <tr>
                     <td class="text text-dark"><i class="fab fa-google-play"></i></td>
-                    <td id="other"><a class="text-dark" target="_blank"
-                            href="https://play.google.com/store/apps/dev?id=7123957245789156225">Diğer
-                            Uygulamalarımız</a></td>
+                    <td><a class="text-dark" target="_blank" id="other"
+                            href="https://play.google.com/store/apps/dev?id=7123957245789156225">Our Other Apps</a></td>
                 </tr>
                 <tr>
                     <td class="text text-dark"><i class="fas fa-envelope"></i></td>
-                    <td id="contact"><a class="text-dark" target="_blank"
-                            href="mailto:absurdapps@yahoo.com">İletişim</a>
+                    <td><a class="text-dark" target="_blank" id="contact"
+                            href="mailto:absurdapps@yahoo.com">Contact</a>
                     </td>
                 </tr>
 
 
 
-                <tr>
+                <tr id="update">
                     <td class="text text-dark"><i class="fas fa-align-left"></i></td>
                     <td style="text-align: justify;">
                         <span class="text-dark">
@@ -82,15 +81,17 @@
 
         lang = localStorage.getItem("langValue");
 
-        if (lang == "en") {
-            document.querySelector('#other').innerHTML = "Our Other Apps";
-            document.querySelector('#contact').innerHTML = "Contact";
-            document.querySelector('.form-label').innerHTML = "Choose your language from the list:";
-        }
+        if (lang == "tr") {
+            document.querySelector('#other').innerHTML = "Diğer Uygulamalarımız";
+            document.querySelector('#contact').innerHTML = "İletişim";
+            document.querySelector('.form-label').innerHTML = "Listeden dilinizi seçin:";
+        } else{
+            document.querySelector('#update').style.display = "none";}
 
         function setLang() {
             langnew = document.getElementById('lang').value;
             localStorage.setItem("langValue", langnew);
+            window.location.reload();
         }
 
     </script>
