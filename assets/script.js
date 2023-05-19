@@ -437,6 +437,7 @@ const surahPage = () => {
     $(".loading").css("display", "none");
     $(".baslik").text(`${sureler[data.data[1].number]}`);
     $("#title").text(`${sureler[data.data[1].number]}`);
+    $(".title").text(`${sureler[data.data[1].number]}`);
   });
 
   const isiData = (data) => {
