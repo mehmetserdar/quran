@@ -26,6 +26,9 @@ const indexPage = () => {
   $("#about").click(() => {
     document.location.href = "about.html";
   });
+  $("#app").click(() => {
+    document.location.href = "https://play.google.com/store/apps/details?id=com.mobuyg.kuran";
+  });
 
   $(".full-screen").click(() => {
     if (!document.fullscreenElement) {
@@ -947,5 +950,9 @@ const isAndroid = /Android/i.test(navigator.userAgent);
 // Hide Navigation Menu on Android Devices
 if (isAndroid) {
   const nav = document.querySelector("header");
+  const app = document.querySelector("app");
   nav.style.display = "none";
-}
+  app.style.display = "none";
+};
+
+
