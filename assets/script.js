@@ -27,7 +27,8 @@ const indexPage = () => {
     document.location.href = "about.html";
   });
   $("#app").click(() => {
-    document.location.href = "https://play.google.com/store/apps/details?id=com.mobuyg.kuran";
+    document.location.href =
+      "https://play.google.com/store/apps/details?id=com.mobuyg.kuran";
   });
 
   $(".full-screen").click(() => {
@@ -46,6 +47,13 @@ const lang = localStorage.getItem("langValue");
 function loadLanguage() {
   if (lang == null) {
     localStorage.setItem("langValue", "tr");
+  }
+}
+
+const meal = localStorage.getItem("mealValue");
+function loadMeal() {
+  if (meal == null) {
+    localStorage.setItem("mealValue", "vakif");
   }
 }
 
@@ -310,7 +318,28 @@ const surahPage = () => {
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,hi.farooq`;
       break;
     default:
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
+      break;
+  }
+
+  switch (meal) {
+    case "vakfi":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
+      break;
+    case "yazir":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.yazir`;
+      break;
+    case "golpinar":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.golpinarli`;
+      break;
+    case "ozturk":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ozturk`;
+      break;
+    case "ates":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ates`;
+      break;    
+    default:
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
       break;
   }
 
@@ -641,7 +670,7 @@ const surahPage = () => {
   const methodBookmark = (e) => {
     const bookmarkObj = {
       surah: no_s,
-      ayat: $(e.target).attr("data-id"),      
+      ayat: $(e.target).attr("data-id"),
     };
     addData(bookmarkObj);
 
@@ -951,6 +980,4 @@ const isAndroid = /Android/i.test(navigator.userAgent);
 if (isAndroid) {
   const nav = document.querySelector("header");
   nav.style.display = "none";
-};
-
-
+}

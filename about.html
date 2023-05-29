@@ -41,6 +41,22 @@
                     </td>
                 </tr>
 
+                <tr id="mealler">
+                    <td class="text text-dark"><i class="fas fa-language"></i></td>
+                    <td>
+                        <label for="meal" class="form-label">Kur'an-ı Kerim Mealini Seçiniz:</label>
+                        <select class="form-control" id="meal" onchange="setMeal()">
+                            <option selected disabled>Birini Seçiniz</option>
+                            <option value="diyanet">Diyanet</option>
+                            <option value="vakfi">Diyanet Vakfı</option>
+                            <option value="yazir">Elmalılı Hamdi Yazır</option>
+                            <option value="ates">Süleyman Ateş</option>
+                            <option value="ozturk">Yaşar Nuri Öztürk</option>
+                            <option value="golpinar">Abdülkbaki Gölpınarlı</option>
+                        </select>
+                    </td>
+                </tr>
+
 
                 <tr>
                     <td class="text text-dark"><i class="fab fa-google-play"></i></td>
@@ -49,8 +65,7 @@
                 </tr>
                 <tr>
                     <td class="text text-dark"><i class="fas fa-envelope"></i></td>
-                    <td><a class="text-dark" target="_blank" id="contact"
-                            href="mailto:absurdapps@yahoo.com">Contact</a>
+                    <td><a class="text-dark" target="_blank" id="contact" href="mailto:absurdapps@yahoo.com">Contact</a>
                     </td>
                 </tr>
 
@@ -64,6 +79,8 @@
                                 Google Play Store'a yüklendi. </p>
                             <p><b>11.05.2023</b> Güncelleme <br>
                                 İyileştirmeler yapıldı, yeni diller eklendi. </p>
+                            <p><b>29.05.2023</b> Güncelleme <br>
+                                İyileştirmeler yapıldı, Türkçe yeni mealler eklendi. </p>
                         </span>
                     </td>
                 </tr>
@@ -72,7 +89,6 @@
     </main>
     <script>// Check if User Agent is Android
         const isAndroid = /Android/i.test(navigator.userAgent);
-
         // Hide Navigation Menu on Android Devices
         if (isAndroid) {
             const nav = document.querySelector('header');
@@ -85,12 +101,20 @@
             document.querySelector('#other').innerHTML = "Diğer Uygulamalarımız";
             document.querySelector('#contact').innerHTML = "İletişim";
             document.querySelector('.form-label').innerHTML = "Listeden dilinizi seçin:";
-        } else{
-            document.querySelector('#update').style.display = "none";}
+        } else {
+            document.querySelector('#update').style.display = "none";
+            document.querySelector('#mealler').style.display = "none";
+        }
 
         function setLang() {
             langnew = document.getElementById('lang').value;
             localStorage.setItem("langValue", langnew);
+            window.location.reload();
+        }
+
+        function setMeal() {
+            mealnew = document.getElementById('meal').value;
+            localStorage.setItem("mealValue", mealnew);
             window.location.reload();
         }
 
