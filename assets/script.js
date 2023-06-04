@@ -320,12 +320,18 @@ const surahPage = () => {
     case "bs":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,bs.korkut`;
       break;
+    case "az":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,az.musayev`;
+      break;
+    case "ug":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,ug.saleh`;
+      break;
     default:
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
       break;
   }
 
-  if (lang == "tr"){
+  if (lang == "tr") {
     switch (meal) {
       case "vakfi":
         var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
@@ -342,10 +348,8 @@ const surahPage = () => {
       case "ates":
         var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ates`;
         break;
-      
     }
   }
-  
 
   let surah = [];
   let totalAyat;
@@ -490,6 +494,8 @@ const surahPage = () => {
         ur: "",
         hi: "",
         bs: "",
+        az: "",
+        ug: "",
         audio: "",
       };
       surah.push(obj);
@@ -581,6 +587,22 @@ const surahPage = () => {
           i++;
         });
         break;
+      case "az":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].az = ayah.text;
+
+          i++;
+        });
+        break;
+      case "ug":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].ug = ayah.text;
+
+          i++;
+        });
+        break;
       default:
         i = 0;
         data[1].ayahs.forEach((ayah) => {
@@ -615,9 +637,11 @@ const surahPage = () => {
                 <div class="yazi-tr">${ayah.es}</div>
                 <div class="yazi-tr">${ayah.fr}</div>
                 <div class="yazi-tr">${ayah.id}</div>
-                <div class="yazi-tr">${ayah.ur}</div>
+                <div class="yazi-arab2">${ayah.ur}</div>
                 <div class="yazi-tr">${ayah.hi}</div>
                 <div class="yazi-tr">${ayah.bs}</div>
+                <div class="yazi-tr">${ayah.az}</div>
+                <div class="yazi-arab2">${ayah.ug}</div>
             </div>
         </li>`;
 
