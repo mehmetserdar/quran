@@ -317,31 +317,35 @@ const surahPage = () => {
     case "hi":
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,hi.farooq`;
       break;
+    case "bs":
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,bs.korkut`;
+      break;
     default:
       var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
       break;
   }
 
-  switch (meal) {
-    case "vakfi":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
-      break;
-    case "yazir":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.yazir`;
-      break;
-    case "golpinar":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.golpinarli`;
-      break;
-    case "ozturk":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ozturk`;
-      break;
-    case "ates":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ates`;
-      break;    
-    default:
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
-      break;
+  if (lang == "tr"){
+    switch (meal) {
+      case "vakfi":
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
+        break;
+      case "yazir":
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.yazir`;
+        break;
+      case "golpinar":
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.golpinarli`;
+        break;
+      case "ozturk":
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ozturk`;
+        break;
+      case "ates":
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ates`;
+        break;
+      
+    }
   }
+  
 
   let surah = [];
   let totalAyat;
@@ -485,6 +489,7 @@ const surahPage = () => {
         id: "",
         ur: "",
         hi: "",
+        bs: "",
         audio: "",
       };
       surah.push(obj);
@@ -568,6 +573,14 @@ const surahPage = () => {
           i++;
         });
         break;
+      case "bs":
+        i = 0;
+        data[1].ayahs.forEach((ayah) => {
+          surah[i].bs = ayah.text;
+
+          i++;
+        });
+        break;
       default:
         i = 0;
         data[1].ayahs.forEach((ayah) => {
@@ -604,6 +617,7 @@ const surahPage = () => {
                 <div class="yazi-tr">${ayah.id}</div>
                 <div class="yazi-tr">${ayah.ur}</div>
                 <div class="yazi-tr">${ayah.hi}</div>
+                <div class="yazi-tr">${ayah.bs}</div>
             </div>
         </li>`;
 
