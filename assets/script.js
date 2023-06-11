@@ -658,7 +658,7 @@ const surahPage = () => {
       stopAudio(e);
     });
     $(".fa-star").click((e) => {
-      const toast = document.querySelector(".toast");
+      const toast = document.querySelector(".toast-not");
       toast.style.visibility = "visible";
       methodBookmark(e);
     });
@@ -761,21 +761,24 @@ document.getElementById("playButton").addEventListener("click", methodPlay);
 // Event listener for the play button
 document.getElementById("playButton").addEventListener("click", methodPlay);
 
-  const methodBookmark = (e) => {
-    const bookmarkObj = {
-      surah: no_s,
-      ayat: $(e.target).attr("data-id"),
-    };
-    addData(bookmarkObj);
-
-    $(".toast").toast("show");
-    // Check if the bookmark object exists
-  
+const methodBookmark = (e) => {
+  const bookmarkObj = {
+    surah: no_s,
+    ayat: $(e.target).attr("data-id"),
   };
 
-  $(".fa-stop").click(() => {
-    stopAudio();
-  });
+  // Check if the bookmark already exists
+  if (!checkBookmark(bookmarkObj)) {
+    addData(bookmarkObj);
+    $(".toast-not").toast("show");
+    $(e.target).addClass("yellow-star");
+  } else {
+    $(".toast-existed").toast("show");
+  }
+
+  // Change the style of the element (e.g., add yellow star)
+  
+};
 
   const checkBookmark = (bookmarkObj) => {
     // Read the data object where bookmarks are stored
@@ -784,12 +787,16 @@ document.getElementById("playButton").addEventListener("click", methodPlay);
     // Check if the bookmark object exists in the bookmarks data
     const exists = bookmarks.some((bookmark) => {
       return (
-        no_s === bookmarkObj.surah && no_a === bookmarkObj.ayat
+        bookmark.surah === bookmarkObj.surah && bookmark.ayat === bookmarkObj.ayat
       );
     });
   
     return exists;
   };
+
+
+  
+
 
   
   
