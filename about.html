@@ -60,6 +60,16 @@
                     </td>
                 </tr>
 
+                <tr id="translate">
+                    <td class="text text-dark"><i class="fas fa-book"></i></td>
+                    <td>
+                        <label for="transl" class="form-label">Quran Translation:</label>
+                        <select class="form-control">
+                            <option selected disabled id="transl">Default</option>
+                        </select>
+                    </td>
+                </tr>
+
 
                 <tr>
                     <td class="text text-dark"><i class="fab fa-google-play"></i></td>
@@ -87,6 +97,8 @@
                                 İyileştirmeler yapıldı, Türkçe'ye yeni mealler eklendi. </p>
                             <p><b>04.06.2023</b> Güncelleme <br>
                                 İyileştirmeler yapıldı, hatalar giderildi. Bosnakça, Azerice ve Uygurca eklendi. </p>
+                            <p><b>11.06.2023</b> Güncelleme <br>
+                                Ayarlarda iyileştirmeler yapıldı, küçük hatalar giderildi. </p>
                         </span>
                     </td>
                 </tr>
@@ -101,15 +113,85 @@
             nav.style.display = 'none';
         }
 
+        const selectElementMeal = document.getElementById('meal');
+        const selectElementLang = document.getElementById('lang');
+        const transElement = document.getElementById('transl');
+
+        // Check if the selected option exists in local storage
+        if (localStorage.getItem('mealValue')) {
+            const selectedMeal = localStorage.getItem('mealValue');
+
+            // Set the selected option in the dropdown
+            selectElementMeal.value = selectedMeal;
+        }
+        if (localStorage.getItem('langValue')) {
+            const selectedLang = localStorage.getItem('langValue');
+
+            // Set the selected option in the dropdown
+            selectElementLang.value = selectedLang;
+        }
+
         lang = localStorage.getItem("langValue");
 
         if (lang == "tr") {
             document.querySelector('#other').innerHTML = "Diğer Uygulamalarımız";
             document.querySelector('#contact').innerHTML = "İletişim";
             document.querySelector('.form-label').innerHTML = "Listeden dilinizi seçin:";
-        } else {
-            document.querySelector('#update').style.display = "none";
+            document.querySelector('#translate').style.display = "none";
+        } else if (lang == "en") {
+            document.querySelector('#update').style.visibility = "hidden";
             document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Muhammad Asad";
+        }
+        else if (lang == "id") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Bahasa Indonesia";
+        }
+        else if (lang == "de") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Adel Theodor Khoury";
+        }
+        else if (lang == "es") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Julio Cortes";
+        }
+        else if (lang == "ru") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Elmir Kuliev";
+        }
+        else if (lang == "fr") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Muhammad Hamidullah";
+        }
+        else if (lang == "ur") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Ahmed Ali";
+        }
+        else if (lang == "hi") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Muhammad Farooq Khan";
+        }
+        else if (lang == "bs") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Besim Korkut";
+        }
+        else if (lang == "az") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Alikhan Musayev";
+        }
+        else if (lang == "ug") {
+            document.querySelector('#update').style.visibility = "hidden"
+            document.querySelector('#mealler').style.display = "none";
+            document.querySelector('#transl').innerHTML = "Muhammad Saleh";
         }
 
         function setLang() {

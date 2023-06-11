@@ -624,9 +624,8 @@ const surahPage = () => {
                 <div class="no-ayat">
                     ${i}
                 </div>
-                <a class="text text-success"><i class="fas fa-play fa-lg" data-id="${i}"></i></a><br> 
-                <a class="text text-danger"><i class="fas fa-stop fa-lg" data-id="${i}"></i></a><br> 
-                <a class="text text-dark"><i class="fas fa-bookmark fa-lg" data-id="${i}"></i></a>
+                
+                <a class="text text-dark"><i class="fas fa-star fa-lg" data-id="${i}"></i></a>
             </div>
             <div class="item-yazi">
                 <div class="yazi-arab">${ayah.arab}</div>
@@ -656,7 +655,7 @@ const surahPage = () => {
     $(".fa-stop").click((e) => {
       stopAudio(e);
     });
-    $(".fa-bookmark").click((e) => {
+    $(".fa-star").click((e) => {
       const toast = document.querySelector(".toast");
       toast.style.visibility = "visible";
       methodBookmark(e);
@@ -667,43 +666,80 @@ const surahPage = () => {
     }
   };
 
-  const methodPlay = (e) => {
-    //onAudio();
-    playAudio($(e.target).attr("data-id"));
-  };
-
   let isPlaying = false;
+let currentAudioIndex = 0;
 
-  const playAudio = (no) => {
-    if (isPlaying) {
-      stopAudio();
+const methodPlay = () => {
+  if (!isPlaying) {
+    playAudio(currentAudioIndex);
+  } else {
+    stopAudio();
+  }
+};
+
+const playAudio = (no) => {
+  if (isPlaying) {
+    stopAudio();
+  }
+  
+  const audioAyah = document.querySelector(".audioAyah");
+  if (audioAyah) {
+    audioAyah.remove();
+  }
+  
+  const el = `<audio id="surahPlayer" src="${surah[no].audio}" type="audio/mp3" controls="controls" class="audioAyah"></audio>`;
+  $(".container").append(el);
+
+  const audioElement = document.getElementById("surahPlayer");
+  audioElement.play();
+
+  updateListProgress(no); // Call the updateListProgress function
+
+  currentAudioIndex = no;
+
+  audioElement.addEventListener("ended", () => {
+    stopAudio();
+    currentAudioIndex++;
+    if (currentAudioIndex < totalAyat) {
+      playAudio(currentAudioIndex);
     }
-    const el = `<audio id="surahPlayer" src="${
-      surah[no - 1].audio
-    }" type="audio/mp3" controls="controls" class="audioAyah audioAyah${no}"></audio>`;
-    $(".list-audio").append(el);
+  });
 
-    const audioAyah = document.querySelector(`.audioAyah${no}`);
-    var calanSure = document.getElementsByClassName("no-ayat");
+  isPlaying = true;
+};
 
-    calanSure[no - 1].setAttribute(
-      "style",
-      "background-color : greenyellow ; border: 2px solid green"
-    );
+const updateListProgress = (no) => {
+  const calanSure = document.getElementsByClassName("list-item");
 
-    audioAyah.play();
-    no++;
+  // Reset the style for all list items
+  for (let i = 0; i < calanSure.length; i++) {
+    calanSure[i].setAttribute("style", "background-color: none; border: 0px 1px 1px 1 px 1px solid grey");
+  }
 
-    if (no <= totalAyat) {
-      audioAyah.addEventListener("ended", () => {
-        playAudio(no);
-      });
-    }
+  // Set the style for the currently playing item
+  calanSure[no].setAttribute(
+    "style",
+    "background-color: lightgrey; border: 0px 1px 1px 1px solid grey"
+  );
+};
 
-    if (no == totalAyat) {
-      isPlaying = true;
-    }
-  };
+const stopAudio = () => {
+  const audioAyah = document.getElementById("surahPlayer");
+  if (audioAyah) {
+    audioAyah.pause();
+    audioAyah.currentTime = 0;
+    audioAyah.remove();
+  }
+  isPlaying = false;
+
+  const calanSure = document.getElementsByClassName("list-item");
+  for (let i = 0; i < calanSure.length; i++) {
+    calanSure[i].setAttribute("style", "background-color: none; border: 0px 1px 1px 1px solid grey");
+  }
+};
+
+// Event listener for the play button
+document.getElementById("playButton").addEventListener("click", methodPlay);
 
   const methodBookmark = (e) => {
     const bookmarkObj = {
@@ -719,14 +755,7 @@ const surahPage = () => {
     stopAudio();
   });
 
-  const stopAudio = () => {
-    const audioAyah = document.querySelectorAll(".audioAyah");
-    audioAyah.forEach((audAy) => {
-      audAy.pause();
-      audAy.currentTime = 0;
-    });
-    isPlaying = true;
-  };
+  
 
   const onAudio = () => {
     i = 1;
