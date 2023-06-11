@@ -285,6 +285,8 @@ const surahPage = () => {
   let no_s = "";
   let no_a;
 
+  
+
   if (url.search("#") != -1) {
     no_s = url.substring(url.indexOf("?") + 1, url.indexOf("#"));
     no_a = url.substr(url.indexOf("#") + 1);
@@ -625,7 +627,7 @@ const surahPage = () => {
                     ${i}
                 </div>
                 
-                <a class="text text-dark"><i class="fas fa-star fa-lg" data-id="${i}"></i></a>
+                <a class="text text-dark"><i class="fas fa-star fa-lg" data-id="${i}" id="star"></i></a>
             </div>
             <div class="item-yazi">
                 <div class="yazi-arab">${ayah.arab}</div>
@@ -706,6 +708,7 @@ const playAudio = (no) => {
   });
 
   isPlaying = true;
+  updatePlayButton(); // Update the play button to a pause button
 };
 
 const updateListProgress = (no) => {
@@ -736,7 +739,24 @@ const stopAudio = () => {
   for (let i = 0; i < calanSure.length; i++) {
     calanSure[i].setAttribute("style", "background-color: none; border: 0px 1px 1px 1px solid grey");
   }
+  updatePlayButton(); // Update the pause button to a play button
 };
+
+const updatePlayButton = () => {
+  const playButton = document.getElementById("playButton");
+  if (isPlaying) {
+    playButton.innerHTML = '<i class="fa fa-pause fa-sm"></i> ';
+    playButton.classList.remove("play");
+    playButton.classList.add("pause");
+  } else {
+    playButton.innerHTML = '<i class="fa fa-play fa-sm"></i> ';
+    playButton.classList.remove("pause");
+    playButton.classList.add("play");
+  }
+};
+
+// Event listener for the play button
+document.getElementById("playButton").addEventListener("click", methodPlay);
 
 // Event listener for the play button
 document.getElementById("playButton").addEventListener("click", methodPlay);
@@ -749,12 +769,52 @@ document.getElementById("playButton").addEventListener("click", methodPlay);
     addData(bookmarkObj);
 
     $(".toast").toast("show");
+    // Check if the bookmark object exists
+  
   };
 
   $(".fa-stop").click(() => {
     stopAudio();
   });
 
+  const checkBookmark = (bookmarkObj) => {
+    // Read the data object where bookmarks are stored
+    const bookmarks = getData();
+  
+    // Check if the bookmark object exists in the bookmarks data
+    const exists = bookmarks.some((bookmark) => {
+      return (
+        no_s === bookmarkObj.surah && no_a === bookmarkObj.ayat
+      );
+    });
+  
+    return exists;
+  };
+
+  
+  
+  const getData = () => {
+    // Retrieve the data object from storage (replace with your actual storage mechanism)
+    const data = localStorage.getItem("bookmark");
+  
+    // Parse the data object if it exists, or initialize an empty array
+    const bookmarks = data ? JSON.parse(data) : [];
+  
+    return bookmarks;
+  };
+  
+  const addData = (bookmarkObj) => {
+    // Retrieve existing bookmarks
+    const bookmarks = getData();
+  
+    // Add the new bookmark object to the array
+    bookmarks.push(bookmarkObj);
+  
+    // Save the updated bookmarks array to storage (replace with your actual storage mechanism)
+    localStorage.setItem("bookmark", JSON.stringify(bookmarks));
+  };
+
+  
   
 
   const onAudio = () => {

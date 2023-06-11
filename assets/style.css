@@ -280,9 +280,36 @@ body{
   }
   
   
-  #playButton {
+  /* Styles for the play button */
+#playButton {
     position: fixed;
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: green;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  #playButton.play {
+    background-color: green;
+    color: white;
+  }
+  
+  /* Styles for the pause button */
+  #playButton.pause {
+    background-color: rgb(52, 58, 64);
+    color: white;
+  }
+
+  .yellow-star{
+    background-color: yellow;
   }
