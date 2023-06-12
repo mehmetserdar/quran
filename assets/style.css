@@ -314,3 +314,8 @@ body{
   .yellow-star{
     color: rgb(200, 153, 0);
   }
+
+  .blurred {
+    filter: blur(4px); /* Adjust the blur amount as needed */
+    opacity: 0.7; /* Adjust the opacity as needed */
+  }

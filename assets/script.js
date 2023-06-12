@@ -285,8 +285,6 @@ const surahPage = () => {
   let no_s = "";
   let no_a;
 
-  
-
   if (url.search("#") != -1) {
     no_s = url.substring(url.indexOf("?") + 1, url.indexOf("#"));
     no_a = url.substr(url.indexOf("#") + 1);
@@ -669,160 +667,165 @@ const surahPage = () => {
   };
 
   let isPlaying = false;
-let currentAudioIndex = 0;
+  let currentAudioIndex = 0;
 
-const methodPlay = () => {
-  if (!isPlaying) {
-    playAudio(currentAudioIndex);
-  } else {
-    stopAudio();
-  }
-};
-
-const playAudio = (no) => {
-  if (isPlaying) {
-    stopAudio();
-  }
-  
-  const audioAyah = document.querySelector(".audioAyah");
-  if (audioAyah) {
-    audioAyah.remove();
-  }
-  
-  const el = `<audio id="surahPlayer" src="${surah[no].audio}" type="audio/mp3" controls="controls" class="audioAyah"></audio>`;
-  $(".container").append(el);
-
-  const audioElement = document.getElementById("surahPlayer");
-  audioElement.play();
-
-  updateListProgress(no); // Call the updateListProgress function
-
-  currentAudioIndex = no;
-
-  audioElement.addEventListener("ended", () => {
-    stopAudio();
-    currentAudioIndex++;
-    if (currentAudioIndex < totalAyat) {
+  const methodPlay = () => {
+    if (!isPlaying) {
       playAudio(currentAudioIndex);
+    } else {
+      stopAudio();
     }
-  });
-
-  isPlaying = true;
-  updatePlayButton(); // Update the play button to a pause button
-};
-
-const updateListProgress = (no) => {
-  const calanSure = document.getElementsByClassName("list-item");
-
-  // Reset the style for all list items
-  for (let i = 0; i < calanSure.length; i++) {
-    calanSure[i].setAttribute("style", "background-color: none; border: 0px 1px 1px 1 px 1px solid grey");
-  }
-
-  // Set the style for the currently playing item
-  calanSure[no].setAttribute(
-    "style",
-    "background-color: lightgrey; border: 0px 1px 1px 1px solid grey"
-  );
-};
-
-const stopAudio = () => {
-  const audioAyah = document.getElementById("surahPlayer");
-  if (audioAyah) {
-    audioAyah.pause();
-    audioAyah.currentTime = 0;
-    audioAyah.remove();
-  }
-  isPlaying = false;
-
-  const calanSure = document.getElementsByClassName("list-item");
-  for (let i = 0; i < calanSure.length; i++) {
-    calanSure[i].setAttribute("style", "background-color: none; border: 0px 1px 1px 1px solid grey");
-  }
-  updatePlayButton(); // Update the pause button to a play button
-};
-
-const updatePlayButton = () => {
-  const playButton = document.getElementById("playButton");
-  if (isPlaying) {
-    playButton.innerHTML = '<i class="fa fa-pause fa-sm"></i> ';
-    playButton.classList.remove("play");
-    playButton.classList.add("pause");
-  } else {
-    playButton.innerHTML = '<i class="fa fa-play fa-sm"></i> ';
-    playButton.classList.remove("pause");
-    playButton.classList.add("play");
-  }
-};
-
-// Event listener for the play button
-document.getElementById("playButton").addEventListener("click", methodPlay);
-
-// Event listener for the play button
-document.getElementById("playButton").addEventListener("click", methodPlay);
-
-const methodBookmark = (e) => {
-  const bookmarkObj = {
-    surah: no_s,
-    ayat: $(e.target).attr("data-id"),
   };
 
-  // Check if the bookmark already exists
-  if (!checkBookmark(bookmarkObj)) {
-    addData(bookmarkObj);
-    $(".toast-not").toast("show");
-    $(e.target).addClass("yellow-star");
-  } else {
-    $(".toast-existed").toast("show");
-  }
+  const playAudio = (no) => {
+    if (isPlaying) {
+      stopAudio();
+    }
 
-  // Change the style of the element (e.g., add yellow star)
-  
-};
+    const audioAyah = document.querySelector(".audioAyah");
+    if (audioAyah) {
+      audioAyah.remove();
+    }
+
+    const el = `<audio id="surahPlayer" src="${surah[no].audio}" type="audio/mp3" controls="controls" class="audioAyah"></audio>`;
+    $(".container").append(el);
+
+    const audioElement = document.getElementById("surahPlayer");
+    audioElement.play();
+
+    updateListProgress(no); // Call the updateListProgress function
+
+    currentAudioIndex = no;
+
+    audioElement.addEventListener("ended", () => {
+      stopAudio();
+      currentAudioIndex++;
+      if (currentAudioIndex < totalAyat) {
+        playAudio(currentAudioIndex);
+      }
+    });
+
+    isPlaying = true;
+    updatePlayButton(); // Update the play button to a pause button
+  };
+
+  const updateListProgress = (no) => {
+    const calanSure = document.getElementsByClassName("list-item");
+
+    // Reset the style for all list items
+    for (let i = 0; i < calanSure.length; i++) {
+      calanSure[i].setAttribute(
+        "style",
+        "background-color: none; border: 0px 1px 1px 1 px 1px solid grey; filter: blur(4px)"
+      );
+    }
+
+    // Set the style for the currently playing item
+    calanSure[no].setAttribute(
+      "style",
+      "background-color: lightgrey; border: 0px 1px 1px 1px solid grey"
+    );
+    // Scroll to the currently playing item
+    calanSure[no].scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+    
+
+  };
+
+  const stopAudio = () => {
+    const audioAyah = document.getElementById("surahPlayer");
+    if (audioAyah) {
+      audioAyah.pause();
+      audioAyah.currentTime = 0;
+      audioAyah.remove();
+    }
+    isPlaying = false;
+
+    const calanSure = document.getElementsByClassName("list-item");
+    for (let i = 0; i < calanSure.length; i++) {
+      calanSure[i].setAttribute(
+        "style",
+        "background-color: none; border: 0px 1px 1px 1px solid grey"
+      );
+    }
+    updatePlayButton(); // Update the pause button to a play button
+  };
+
+  const updatePlayButton = () => {
+    const playButton = document.getElementById("playButton");
+    if (isPlaying) {
+      playButton.innerHTML = '<i class="fa fa-pause fa-sm"></i> ';
+      playButton.classList.remove("play");
+      playButton.classList.add("pause");
+    } else {
+      playButton.innerHTML = '<i class="fa fa-play fa-sm"></i> ';
+      playButton.classList.remove("pause");
+      playButton.classList.add("play");
+    }
+  };
+
+  // Event listener for the play button
+  document.getElementById("playButton").addEventListener("click", methodPlay);
+
+  // Event listener for the play button
+  document.getElementById("playButton").addEventListener("click", methodPlay);
+
+  const methodBookmark = (e) => {
+    const bookmarkObj = {
+      surah: no_s,
+      ayat: $(e.target).attr("data-id"),
+    };
+
+    // Check if the bookmark already exists
+    if (!checkBookmark(bookmarkObj)) {
+      addData(bookmarkObj);
+      $(".toast-not").toast("show");
+      $(e.target).addClass("yellow-star");
+    } else {
+      $(".toast-existed").toast("show");
+    }
+
+    // Change the style of the element (e.g., add yellow star)
+  };
 
   const checkBookmark = (bookmarkObj) => {
     // Read the data object where bookmarks are stored
     const bookmarks = getData();
-  
+
     // Check if the bookmark object exists in the bookmarks data
     const exists = bookmarks.some((bookmark) => {
       return (
-        bookmark.surah === bookmarkObj.surah && bookmark.ayat === bookmarkObj.ayat
+        bookmark.surah === bookmarkObj.surah &&
+        bookmark.ayat === bookmarkObj.ayat
       );
     });
-  
+
     return exists;
   };
 
-
-  
-
-
-  
-  
   const getData = () => {
     // Retrieve the data object from storage (replace with your actual storage mechanism)
     const data = localStorage.getItem("bookmark");
-  
+
     // Parse the data object if it exists, or initialize an empty array
     const bookmarks = data ? JSON.parse(data) : [];
-  
+
     return bookmarks;
   };
-  
+
   const addData = (bookmarkObj) => {
     // Retrieve existing bookmarks
     const bookmarks = getData();
-  
+
     // Add the new bookmark object to the array
     bookmarks.push(bookmarkObj);
-  
+
     // Save the updated bookmarks array to storage (replace with your actual storage mechanism)
     localStorage.setItem("bookmark", JSON.stringify(bookmarks));
   };
-
-  
-  
 
   const onAudio = () => {
     i = 1;
