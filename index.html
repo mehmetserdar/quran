@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="assets/style.css">	
+	<link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body class="bg-home-screen">
@@ -33,23 +33,31 @@
 	<script>
 		const langValue = localStorage.getItem("langValue");
 		loadLanguage();
-		if (langValue == "tr" ){
+		if (langValue == "tr") {
 			indexPage();
 			document.querySelector('#quran').innerHTML = "Kur'an-ı Kerim";
 			document.querySelector('#sayac').innerHTML = "Zikirmatik";
 			document.querySelector('#bookmark').innerHTML = "Favoriler";
 			document.querySelector('#about').innerHTML = "Ayarlar";
 			document.querySelector('#app').innerHTML = "Uygulamaya Puan Verin";
-			
+
 
 		} else {
 			indexPage();
 			document.querySelector('#dua').style.display = "none";
 			document.querySelector('#sure').style.display = "none";
 			document.querySelector('#abdest').style.display = "none";
-			
-		}		
+
+		}
+
 		
+
+		if (isAndroid) {			
+			document.querySelector('#app').style.display = "none";
+			document.querySelector('#about').style.display = "none";
+		}
+
+
 	</script>
 </body>
 
