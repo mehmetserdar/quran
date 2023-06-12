@@ -669,6 +669,7 @@ const surahPage = () => {
   let isPlaying = false;
   let currentAudioIndex = 0;
 
+
   const methodPlay = () => {
     if (!isPlaying) {
       playAudio(currentAudioIndex);
@@ -711,14 +712,17 @@ const surahPage = () => {
 
   const updateListProgress = (no) => {
     const calanSure = document.getElementsByClassName("list-item");
-
     // Reset the style for all list items
     for (let i = 0; i < calanSure.length; i++) {
       calanSure[i].setAttribute(
         "style",
         "background-color: none; border: 0px 1px 1px 1 px 1px solid grey; filter: blur(4px)"
       );
+      document.querySelector('#surahPlayer').style.display = "none";
+
     }
+
+    
 
     // Set the style for the currently playing item
     calanSure[no].setAttribute(
@@ -728,7 +732,7 @@ const surahPage = () => {
     // Scroll to the currently playing item
     calanSure[no].scrollIntoView({
       behavior: "smooth",
-      block: "end",
+      block: "center",
       inline: "nearest",
     });
     
@@ -760,10 +764,14 @@ const surahPage = () => {
       playButton.innerHTML = '<i class="fa fa-pause fa-sm"></i> ';
       playButton.classList.remove("play");
       playButton.classList.add("pause");
+      playButton.style.opacity = "0.3";
+
     } else {
       playButton.innerHTML = '<i class="fa fa-play fa-sm"></i> ';
       playButton.classList.remove("pause");
       playButton.classList.add("play");
+      playButton.style.opacity = "1.0";
+
     }
   };
 
