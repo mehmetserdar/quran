@@ -12,17 +12,66 @@
 	<link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body class="bg-home-screen">
+<body class="body background">
 	<main>
-		<div class="menu">
-			<button id="quran" class="btn btn-dark btn-block btn-lg font-weight-bold ">Quran</button><br>
-			<button id="dua" class="btn btn-dark btn-block btn-lg font-weight-bold ">Namaz Duaları</button><br>
-			<button id="sure" class="btn btn-dark btn-block btn-lg font-weight-bold ">Namaz Sûreleri</button><br>
-			<button id="abdest" class="btn btn-dark btn-block btn-lg font-weight-bold ">Abdest</button><br>
-			<button id="sayac" class="btn btn-dark btn-block btn-lg font-weight-bold ">Tasbih</button><br>
-			<button id="bookmark" class="btn btn-dark btn-block btn-lg font-weight-bold ">Favorites</button><br>
-			<button id="about" class="btn btn-dark btn-block btn-lg font-weight-bold ">Settings</button><br>
-			<button id="app" class="btn btn-dark btn-block btn-lg font-weight-bold ">Rate Our App</button><br>
+
+		<div class="container pt-5">
+			<div class="row ">
+				<div class="col-lg-4 col-6" id="bookmark">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/1.png" alt="Image 1">
+						<h4 id="bookmarkT">Favorites</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="quran">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/2.png" alt="Image 2">
+						<h4 id="quranT">Quran</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="sayac">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/3.png" alt="Image 3">
+						<h4 id="sayacT">Tasbeeh</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="dua">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/4.png" alt="Image 4">
+						<h4 id="duaT">Namaz Duaları</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="sure">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/5.png" alt="Image 5">
+						<h4 id="sureT">Namaz Sûreleri</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="abdest">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/6.png" alt="Image 6">
+						<h4 id="abdestT">Abdest</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="about">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/7.png" alt="Image 7">
+						<h4 id="aboutT">Settings</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="app">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/8.png" alt="Image 8">
+						<h4 id="appT">Download App</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-6" id="other">
+					<div class="text-center">
+						<img class="button-image" src="./assets/image/9.png" alt="Image 9">
+						<h4 id="otherT">Our Other Apps</h4>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 
@@ -31,15 +80,43 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="./assets/script.js"></script>
 	<script>
+
+		$(document).ready(function () {
+			const bgImages = [
+				"./assets/image/m0.jpg",
+				"./assets/image/m1.jpg",
+				"./assets/image/m2.jpg",
+				"./assets/image/m3.jpg",
+				"./assets/image/m4.jpg",
+				"./assets/image/m5.jpg",
+				"./assets/image/m6.jpg",
+				"./assets/image/m7.jpg",
+				"./assets/image/m8.jpg",
+				"./assets/image/m9.jpg",
+				"./assets/image/m10.jpg",
+				"./assets/image/m11.jpg",
+				"./assets/image/m12.jpg",
+				"./assets/image/m13.jpg"
+				// Add more image paths as needed
+			];
+
+			const randomIndex = Math.floor(Math.random(0,14) * bgImages.length);
+			const randomImage = bgImages[randomIndex];
+
+			$(".background").css({
+				"background-image": `url('${randomImage}')`,
+			});
+		});
 		const langValue = localStorage.getItem("langValue");
 		loadLanguage();
 		if (langValue == "tr") {
 			indexPage();
-			document.querySelector('#quran').innerHTML = "Kur'an-ı Kerim";
-			document.querySelector('#sayac').innerHTML = "Zikirmatik";
-			document.querySelector('#bookmark').innerHTML = "Favoriler";
-			document.querySelector('#about').innerHTML = "Ayarlar";
-			document.querySelector('#app').innerHTML = "Uygulamaya Puan Verin";
+			document.querySelector('#quranT').innerHTML = "Kur'an-ı Kerim";
+			document.querySelector('#sayacT').innerHTML = "Zikirmatik";
+			document.querySelector('#bookmarkT').innerHTML = "Favoriler";
+			document.querySelector('#aboutT').innerHTML = "Ayarlar";
+			document.querySelector('#appT').innerHTML = "Uygulamayı İndirin";
+			document.querySelector('#otherT').innerHTML = "Diğer Uygulamalarımız";
 
 
 		} else {
@@ -50,12 +127,15 @@
 
 		}
 
-		
 
-		if (isAndroid) {			
+
+		if (isAndroid) {
 			document.querySelector('#app').style.display = "none";
 			document.querySelector('#about').style.display = "none";
+			document.querySelector('#other').style.display = "none";
 		}
+
+
 
 
 	</script>

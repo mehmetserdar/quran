@@ -30,6 +30,10 @@ const indexPage = () => {
     document.location.href =
       "https://play.google.com/store/apps/details?id=com.mobuyg.kuran";
   });
+  $("#other").click(() => {
+    document.location.href =
+      "https://play.google.com/store/apps/dev?id=7123957245789156225";
+  });
 
   $(".full-screen").click(() => {
     if (!document.fullscreenElement) {
@@ -1126,3 +1130,5 @@ if (isAndroid) {
   const nav = document.querySelector("header");
   nav.style.display = "none";
 }
+
+

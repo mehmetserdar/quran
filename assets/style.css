@@ -4,6 +4,12 @@
     font-weight: bold;
 }
 
+@font-face {
+    font-family: "aller";
+    src: url('./Aller_Std_Rg.ttf');
+    font-weight: bold;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -14,9 +20,22 @@ a {
 }
 
 
-.bg-home-screen {
-    background-image: url("image/bg4.png");
-}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url('./assets/images/default-bg.jpg'); /* Default background image */
+    background-size: cover;
+    background-position: center;
+  }
+
+  .background {
+    background-color: #1d1d1d;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease;
+    backdrop-filter: blur(5px); /* Add blur effect to the background image */
+  }
 
 .full-screen {
     font-size: 2em;
@@ -318,4 +337,25 @@ body{
   .blurred {
     filter: blur(4px); /* Adjust the blur amount as needed */
     opacity: 0.7; /* Adjust the opacity as needed */
+  }
+
+  .button-image {
+    width: 150px;
+    height: 150px;
+    max-height: 150px; /* Adjust the maximum height as needed */
+    background-color: #218838;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
+  }
+
+  h4 {
+    font-family: 'aller';
+    text-align:center;
+    margin-top: 0.2em;
+    font-size: 1.2em;
+    color: #fff;
+    margin-bottom: 1em;
+    padding-left: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Adjust the shadow values as needed */
   }
