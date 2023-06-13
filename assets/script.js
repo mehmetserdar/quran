@@ -619,13 +619,16 @@ const surahPage = () => {
 
     showData();
   };
+  
+
+  
 
   const showData = () => {
     i = 1;
     surah.forEach((ayah) => {
       const elementList = `<li class="list-item" id="${i}">
             <div class="item-icon">
-                <div class="no-ayat">
+                <div class="no-ayat"  data-id="${i-1}">
                     ${i}
                 </div>
                 
@@ -659,8 +662,8 @@ const surahPage = () => {
   </footer>`
     $("#list-ayah").append(footer);
 
-    $(".fa-play").click((e) => {
-      methodPlay(e);
+    $(".no-ayat").click((e) => {
+      methodPlay2(e);
     });
     $(".fa-stop").click((e) => {
       stopAudio(e);
@@ -686,6 +689,11 @@ const surahPage = () => {
     } else {
       stopAudio();
     }
+  };
+
+  const methodPlay2 = (e) => {
+    //onAudio();
+    playAudio($(e.target).attr("data-id"));
   };
 
   const playAudio = (no) => {
