@@ -340,11 +340,11 @@ body{
   }
 
   .button-image {
-    width: 150px;
-    height: 150px;
-    max-height: 150px; /* Adjust the maximum height as needed */
-    background-color: #218838;
-    border-radius: 10px;
+    width: 120px;
+    height: 1200px;
+    max-height: 120px; /* Adjust the maximum height as needed */
+    background-color: rgb(54,74,79);
+    border-radius: 20px;
     padding: 25px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
   }
