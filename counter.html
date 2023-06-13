@@ -52,6 +52,13 @@
 
 
 <script>
+    // Check if User Agent is Android
+    const isAndroid = /Android/i.test(navigator.userAgent);
+        // Hide Navigation Menu on Android Devices
+        if (isAndroid) {
+            const nav = document.querySelector('header');
+            nav.style.display = 'none';
+        }
     // Get DOM Elements
     const counterNumber = document.querySelector('#counterNumber');
     const incrementButton = document.querySelector('#incrementButton');
