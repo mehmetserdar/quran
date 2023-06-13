@@ -21,7 +21,7 @@ a {
 
 
 
-body {
+.main-page {
     margin: 0;
     overflow: hidden;
     background-image: url('./assets/images/default-bg.jpg'); /* Default background image */
