@@ -19,12 +19,17 @@ a {
     text-decoration: none;
 }
 
+.line{
+    background-image: url('./assets/image/line.png');
+    background-size: cover;
+    background-position: center;
+}
 
 
 .main-page {
     margin: 0;
     overflow: hidden;
-    background-image: url('./assets/images/default-bg.jpg'); /* Default background image */
+    background-image: url('./assets/image/default-bg.jpg'); /* Default background image */
     background-size: cover;
     background-position: center;
   }
@@ -357,4 +362,10 @@ body{
     color: #fff;
     margin-bottom: 1em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Adjust the shadow values as needed */
+  }
+
+  footer {
+    position:relative !important;
+    bottom: 0;
+    height: 100px;
   }

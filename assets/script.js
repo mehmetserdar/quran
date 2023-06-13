@@ -652,6 +652,12 @@ const surahPage = () => {
 
       i++;
     });
+    const footer = `<footer id="footer" class=" py-1 bg-dark text-white-50" style="font-family: 'mequran'; z-index:-1">
+      <img src="./assets/image/line.png" style="max-width: 250px; padding-bottom: 20px;"></img><br>
+     <span>صَدَقَ اللّهُ العَظِيمُ</span> 
+  
+  </footer>`
+    $("#list-ayah").append(footer);
 
     $(".fa-play").click((e) => {
       methodPlay(e);
