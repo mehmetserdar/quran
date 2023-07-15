@@ -298,59 +298,59 @@ const surahPage = () => {
   /*  ,  de.khoury  ,  */
   switch (lang) {
     case "id":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,id.indonesian`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,id.indonesian`;
       break;
     case "de":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,de.khoury`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,de.khoury`;
       break;
     case "es":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,es.cortes`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,es.cortes`;
       break;
     case "ru":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,ru.kuliev`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,ru.kuliev`;
       break;
     case "fr":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,fr.hamidullah`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,fr.hamidullah`;
       break;
     case "en":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,en.asad`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,en.asad`;
       break;
     case "ur":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,ur.ahmedali`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,ur.ahmedali`;
       break;
     case "hi":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,hi.farooq`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,hi.farooq`;
       break;
     case "bs":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,bs.korkut`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,bs.korkut`;
       break;
     case "az":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,az.musayev`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,az.musayev`;
       break;
     case "ug":
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,ug.saleh`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,ug.saleh`;
       break;
     default:
-      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.diyanet`;
+      var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.diyanet`;
       break;
   }
 
   if (lang == "tr") {
     switch (meal) {
       case "vakfi":
-        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.vakfi`;
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.vakfi`;
         break;
       case "yazir":
-        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.yazir`;
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.yazir`;
         break;
       case "golpinar":
-        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.golpinarli`;
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.golpinarli`;
         break;
       case "ozturk":
-        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ozturk`;
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.ozturk`;
         break;
       case "ates":
-        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.abdulsamad,tr.ates`;
+        var url_api = `https://api.alquran.cloud/v1/surah/${no_s}/editions/ar.saoodshuraym,tr.ates`;
         break;
     }
   }
